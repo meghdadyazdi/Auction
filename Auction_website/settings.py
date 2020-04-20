@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '48kn)!l66s1iq_!m8fv@ur!7$&phq4mzg)13q_-425!k(6+o$g'
+SECRET_KEY = '^l74ns4-jvy))tdxz^^uqb6o^=5x1dv*io)ev6ufvr%uy!drh1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
     'accounts',
+    'items',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -101,10 +103,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.CaseInsensitiveAuth',
 ]
+
+
 
 
 # Internationalization
@@ -125,5 +130,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

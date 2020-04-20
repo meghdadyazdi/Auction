@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}<br><br><br>
+<div class="row">
+{% for item in items %}
+            
+
+
+            <div class="col-12 col-xs-6 col-md-4 card-item boxxx">
+			<img class="img-item" src="/media/{{ item.image }}">
+			<div class="card-container">
+				<h6 class="no-flow capital  m0 p0"><b>{{item.title}}</b></h6>
+			</div>
+				<p class="no-flow"><strong> Title:</strong><i class="capital"> {{item.title}} </i></p>
+				<p class="no-flow"><strong>Seller :</strong> {{item.seller}}</p>
+				<p class="no-flow m0 p0">
+					<strong>Created date :</strong> {{item.created_date }}
+				</p>
+				<!-- <p class="no-flow m0 p0">
+					<strong>Recipe:</strong> {{item.title}}
+				</p> -->
+			</div>
+			<a class="divLinkkk" href="{% url 'item_detail' item.id %}"></a>
+	
+            
+        
+    {% endfor %}
+</div>
+
+
+
+   
+{% endblock %}

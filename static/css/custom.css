@@ -18,3 +18,61 @@ footer {
 .accountform {
     padding-top: 20px;
 }
+
+.card-item{
+  /*box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);*/
+  transition: 0.3s;
+  border-radius: 10px;
+  margin: 0 0 10px 0;
+  height: 330px;
+  width: 200px;
+}
+
+.img-item{
+    height: 50%;
+    width: 100%;
+}
+
+/* .card-recipe:hover{
+  box-shadow: 0 8px 90px 0 rgba(0,0,0,1);
+} */
+
+.boxxx {
+   position: relative;
+   padding: 20px;
+}
+
+.p0{
+    padding: 0 !important;
+}
+
+.m0{
+    margin: 0 !important;
+}
+
+.card-container{
+  padding: 2px 16px;
+}
+
+.no-flow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.capital{
+    text-transform: capitalize;
+}
+
+.divLinkkk {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   text-decoration: none;
+   z-index: 10;
+   background-color: white;
+   opacity: 0;
+   filter: alpha(opacity=0);
+}
