@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %}<br /><br /><br />
+{% extends "base.html" %} {% block content %}<br><br><br>
 <div class="row m0 p0">
   {% for item in items %}
 
@@ -7,13 +7,13 @@
       <img class="img-item" src="/media/{{ item.image }}" />
     </div>
     <!-- <div class="card-container"> -->
-    <h6 class="no-flow capital m0 p0"><b>{{item.title}}</b></h6>
+    <h6 class="no-flow capital "><b>{{item.title}}</b></h6>
     <!-- </div> -->
     <p class="no-flow">
       <strong> Title:</strong><i class="capital"> {{item.title}} </i>
     </p>
     <p class="no-flow"><strong>Seller :</strong> {{item.seller}}</p>
-    <p class="no-flow m0 p0">
+    <p class="no-flow">
       <strong>Created date :</strong> {{item.created_date }}
     </p>
     <!-- <p class="no-flow m0 p0">
