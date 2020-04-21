@@ -19,18 +19,26 @@
     <!-- <p class="no-flow m0 p0">
 					<strong>Recipe:</strong> {{item.title}}
 				</p> -->
-    <a class="divLinkkk" href="{% url 'item_detail' item.id %}"></a>
   </div>
-  
+  <!-- <a class="divLinkkk" href="{% url 'item_detail' item.id %}"></a> -->
 
   
-  
+  <div class="main">
+  <div class="roww">
+  <div class="column nature">
+    <div class="content">
+      <img src="/media/{{ item.image }}" alt="" style="width: 100%;" />
+      <h4>Mountains</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
 
   {% endfor %}
-
-
-
-
 </div>
+</div>
+
+
+
+<!-- </div> -->
 
 {% endblock %}
