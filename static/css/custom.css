@@ -57,6 +57,24 @@ body {
     width: 200px;
 }
 
+/* img-detail__________________________________________________ */
+
+.img-detail{
+    width: auto;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-detail-container{
+    background-color: #ccc;
+    border-radius: 1px;
+    /* overflow: hidden; */
+    height: 300px;
+    width: 300px;
+}
+
 /* .card-recipe:hover{
   box-shadow: 0 8px 90px 0 rgba(0,0,0,1);
 } */

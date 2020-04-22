@@ -1,34 +1,48 @@
-{% extends "base.html" %}
-
-{% block content %}<br><br><br>
-
+{% extends "base.html" %} {% block content %}<br /><br /><br />
 
 <div class="row">
-        <div class="col-md-2 col-sm-3 text-center">
-            <a class="story-img" href="#">
-                <img src="/media/img/meghdad1.JPG" class="img-circle">
-            </a>
-            <p><span class="boldtext">Author:</span> Niel</p>
-        </div>
-        <div class="col-sm-10 col-md-9">
-        
-        <p>You are logged in as {{ user.username }} </p>
-
-            {% if item.image %}
-                <img class="img-blogpost" src="/media/{{ item.image }}">
-            {% endif %}
-            <h3>{{ item.title }}</h3>
-            <div class="row">
-                <div class="col-xs-9">
-                    <p>{{ item.content }}</p>
-                    <p><span class="boldtext">Published on:</span> {{ item.published_date }} </p>
-                    <p><span class="boldtext">Views:</span> {{item.views}}</p>
-                    <p><span class="boldtext">Tag:</span> {{ item.tag }}</p>
-                    <a href="{% url 'get_items' %}" class="btn btn-default">Back to Blog</a>
-                    <a href="{% url 'edit_item' item.id%}" class="btn btn-default">Edit item</a>
-                    <hr>
-                </div>
-            </div>
-        </div>
+  <div class="col-sm-10 col-md-9">
+    {% if user.username %}
+    <p>You are logged in as {{ user.username }}</p>
+    {% else %}
+    <p>To start bidding you should log in or register</p>
+    {% endif %} {% if item.image %}
+    <div class="img-detail-container">
+      <img class="img-detail" src="/media/{{ item.image }}" />
     </div>
+    {% endif %}
+    <h3>{{ item.title }}</h3>
+    <div class="row">
+      <div class="col-xs-9">
+        <p>{{ item.content }}</p>
+        <p>
+          <span class="boldtext"><strong>Description:</strong></span>
+        </p>
+        <p>{{ item.description }}</p>
+        <p>
+          <span class="boldtext"><i class="far fa-eye"></i></span>
+          {{item.views}}
+        </p>
+        <p>
+          <span class="boldtext">Published on:</span> {{ item.published_date }}
+        </p>
+        <p><span class="boldtext">#</span> {{ item.tag }}</p>
+        <a href="{% url 'get_items' %}" class="btn btn-default">Home</a>
+        {% if user.username and user.username == item.seller %}
+        <a href="{% url 'edit_item' item.id%}" class="btn btn-default"
+          >Edit item</a
+        >
+        {% endif %}
+        <hr />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-sm-3 text-center">
+    <p><span class="">Bidding here</span></p>
+
+
+
+
+  </div>
+</div>
 {% endblock %}
