@@ -1,7 +1,21 @@
-{% extends "base.html" %} {% block content %}<br /><br /><br />
-
+{% extends "base.html" %} {% load static from staticfiles %} {% block head_js %}
+<script type="text/javascript" src="{% static 'js/timer.js' %}"></script>
+{% endblock %} {% block content %}
 <div class="row">
-  <div class="col-sm-10 col-md-9">
+<div class="col-12 col-md-4 text-center">
+
+    <p><span class="">Bidding here</span></p>
+
+    <div class="timer" id="timer">
+      <div class="timer" id="days"></div>
+      <div class="timer" id="hours"></div>
+      <div class="timer" id="minutes"></div>
+      <div class="timer" id="seconds"></div>
+    </div>
+
+  </div>
+
+  <div class="col-12 col-md-8">
     {% if user.username %}
     <p>You are logged in as {{ user.username }}</p>
     {% else %}
@@ -12,8 +26,8 @@
     </div>
     {% endif %}
     <h3>{{ item.title }}</h3>
-    <div class="row">
-      <div class="col-xs-9">
+    <!-- <div class="row">
+      <div class="col"> -->
         <p>{{ item.content }}</p>
         <p>
           <span class="boldtext"><strong>Description:</strong></span>
@@ -34,15 +48,10 @@
         >
         {% endif %}
         <hr />
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
   </div>
-  <div class="col-md-2 col-sm-3 text-center">
-    <p><span class="">Bidding here</span></p>
 
-
-
-
-  </div>
+  
 </div>
 {% endblock %}
