@@ -1,10 +1,32 @@
 {% extends "base.html" %} {% load static from staticfiles %} {% block head_js %}
-<script type="text/javascript" src="{% static 'js/timer.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script2.js' %}"></script>
+
 {% endblock %} {% block content %}
 <div class="row">
-<div class="col-12 col-md-4 text-center">
+  <div class="col-12 col-md-4 text-center">
+    <p><span class="">Choose how long you want to auction your item: </span></p>
 
-    <p><span class="">Bidding here</span></p>
+    <!-- <form method="post" action="{% url 'item_detail' item.id %}">
+      {% csrf_token %}
+      <div class="input-group">
+        
+        
+        <input type="hidden" id="userId" name="userId" value="{{ user.username }}" />
+      </div>
+      
+    </form> -->
+    <div class="d-none" id="start_auction">
+      <input type="number" id="time-quantity" name="time-quantity" min="1" max="60" />
+      <select id="time-scale" name="time-scale">
+        <option value="Minutes">Minutes</option>
+        <option value="Hours">Hours</option>
+        <option value="Days">Days</option>
+      </select>
+      <span class="input-group-btn" id="start-auction">
+        <button class="btn btn-success" type="submit">Start auction</button>
+        <p id="demo"></p>
+      </span>
+    </div>
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -12,8 +34,61 @@
       <div class="timer" id="minutes"></div>
       <div class="timer" id="seconds"></div>
     </div>
+  
 
+  <div class="" id="end_auction">
+    <p>Auction is finished. Winner is: {{item.highest_bid[0]}}</p>
   </div>
+
+  <div class="" id="status">
+    <p>
+      The highest bid so far is {{item.highest_bid[0]}} by
+      {{item.highest_bid[1]}}
+    </p>
+  </div>
+
+  <div class="" id="before_auction">
+    <p>The seller has not started the auction yet</p>
+  </div>
+
+  <div class="" id="winner">
+    <p>You won this item. Now you can pay</p>
+    <span class="input-group-btn" id="pay">
+      <button class="btn btn-success" type="submit">Check out</button>
+    </span>
+    <p>
+      If you don't pay in 24 hours you cannnot pay it anymore and you will be
+      blocked from bidding this item
+    </p>
+  </div>
+
+  <div class="" id="bidding">
+    <p>Offer a higher bid and win this item</p>
+    {% if item.price <= 500 %}
+    <spam class="" id="1a">+1</spam>
+    <spam class="" id="5a">+5</spam>
+    <spam class="" id="10a">+10</spam>
+    <spam class="" id="20a">+20</spam>
+    {% elif item.price > 500 and item.price <= 1000 %}
+    <spam class="" id="10b">+10</spam>
+    <spam class="" id="20b">+20</spam>
+    <spam class="" id="50b">+50</spam>
+    <spam class="" id="100b">+100</spam>
+    {% elif item.price > 1000 and item.price <= 5000 %}
+    <spam class="" id="50c">+50</spam>
+    <spam class="" id="100c">+100</spam>
+    <spam class="" id="200c">+200</spam>
+    <spam class="" id="500c">+500</spam>
+    {% else %}
+    <spam class="" id="200d">+200</spam>
+    <spam class="" id="500d">+500</spam>
+    <spam class="" id="1000d">+1000</spam>
+    <spam class="" id="5000d">+5000</spam>
+    {% endif %}
+  </div>
+  </div>
+
+
 
   <div class="col-12 col-md-8">
     {% if user.username %}
@@ -28,30 +103,41 @@
     <h3>{{ item.title }}</h3>
     <!-- <div class="row">
       <div class="col"> -->
-        <p>{{ item.content }}</p>
-        <p>
-          <span class="boldtext"><strong>Description:</strong></span>
-        </p>
-        <p>{{ item.description }}</p>
-        <p>
-          <span class="boldtext"><i class="far fa-eye"></i></span>
-          {{item.views}}
-        </p>
-        <p>
-          <span class="boldtext">Published on:</span> {{ item.published_date }}
-        </p>
-        <p><span class="boldtext">#</span> {{ item.tag }}</p>
-        <a href="{% url 'get_items' %}" class="btn btn-default">Home</a>
-        {% if user.username and user.username == item.seller %}
-        <a href="{% url 'edit_item' item.id%}" class="btn btn-default"
-          >Edit item</a
-        >
-        {% endif %}
-        <hr />
-      <!-- </div>
+    <p>{{ item.content }}</p>
+    <p>
+      <span class="boldtext"><strong>Description:</strong></span>
+    </p>
+    <p>{{ item.description }}</p>
+    <p>
+      <span class="boldtext"><i class="far fa-eye"></i></span>
+      {{item.views}}
+    </p>
+    <p><span class="boldtext">Published on:</span> {{ item.published_date }}</p>
+    <p><span class="boldtext">#</span> {{ item.tag }}</p>
+    <a href="{% url 'get_items' %}" class="btn btn-default">Home</a>
+    {% if user.username and user.username == item.seller %}
+    <a href="{% url 'edit_item' item.id%}" class="btn btn-default">Edit item</a>
+    {% endif %}
+    <hr />
+    <!-- </div>
     </div> -->
   </div>
 
-  
+  <!-- {% if item.comment_seller %}
+  <div class="col-12">
+  <p>Seler:</p><span>{{item.comment_seller}}</span>
+  </div>
+
+  {% if item.comment_buyer %}
+  <div class="col-12">
+  <p>Buyer:</p><span>{{item.comment_buyer}}</span>
+  </div>
+
+  {% if user.username and user.username == item.seller %} -->
+
+
+
+
 </div>
+
 {% endblock %}

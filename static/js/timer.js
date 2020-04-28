@@ -1,10 +1,34 @@
-var nowFix = new Date();
-nowFix = (Date.parse(nowFix) / 1000)+6;
+function myFunction() {
+  var x = document.getElementById("userId").value;
+  document.getElementById("demo").innerHTML = x;
+}
 
+
+
+//$("#payment-form").onck(function() {
+//    var 
+//});
+
+var time_quantity = $("#time-quantity").val();
+var time_scale = $("#time-scale").val();
+console.log(time_scale);
+//var time_scale = document.getElementById("userId");
+
+
+if (time_scale == "Minutes") {var auction_time = time_quantity * 60;}
+if (time_scale == "Hours") {var auction_time = time_quantity * 60 * 60;}
+if (time_scale == "Days") {var auction_time = time_quantity * 60 * 60 * 24;}    
+
+
+var nowFix = new Date();
+nowFix = (Date.parse(nowFix) / 1000) + auction_time;
+console.log(nowFix);
 var days; 
 var hours;
 var minutes;
 var seconds;
+
+
 
 function makeTimer() {
 
@@ -44,10 +68,6 @@ function makeTimer() {
                 
 
     }
-    
-    console.log(seconds)
 
     
     setInterval(function() { makeTimer(); }, 1000);
-    
-    
