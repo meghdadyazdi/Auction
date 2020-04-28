@@ -4,7 +4,7 @@
 {% endblock %} {% block content %}
 <div class="row">
   <div class="col-12 col-md-4 text-center">
-    <p><span class="">Choose how long you want to auction your item: </span></p>
+    
 
     <!-- <form method="post" action="{% url 'item_detail' item.id %}">
       {% csrf_token %}
@@ -16,6 +16,7 @@
       
     </form> -->
     <div class="d-none" id="start_auction">
+    <p><span class="">Choose how long you want to auction your item: </span></p>
       <input type="number" id="time-quantity" name="time-quantity" min="1" max="60" />
       <select id="time-scale" name="time-scale">
         <option value="Minutes">Minutes</option>
@@ -37,13 +38,13 @@
   
 
   <div class="" id="end_auction">
-    <p>Auction is finished. Winner is: {{item.highest_bid[0]}}</p>
+    <p>Auction is finished. Winner is: {{highest_bid_user}}</p>
   </div>
 
   <div class="" id="status">
     <p>
-      The highest bid so far is {{item.highest_bid[0]}} by
-      {{item.highest_bid[1]}}
+      The highest bid so far is {{highest_bid_offer}} by
+      {{highest_bid_user}}
     </p>
   </div>
 
@@ -123,17 +124,7 @@
     </div> -->
   </div>
 
-  <!-- {% if item.comment_seller %}
-  <div class="col-12">
-  <p>Seler:</p><span>{{item.comment_seller}}</span>
-  </div>
 
-  {% if item.comment_buyer %}
-  <div class="col-12">
-  <p>Buyer:</p><span>{{item.comment_buyer}}</span>
-  </div>
-
-  {% if user.username and user.username == item.seller %} -->
 
 
 

@@ -1,6 +1,6 @@
 body {
     background-color: #f1f1f1;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   font-family: Arial;
 }
 
@@ -22,13 +22,16 @@ body {
 }
 
 
-
 .icon-bar {
     background-color: #fff;
 }
 
 .accountform {
     padding-top: 20px;
+}
+
+.d-none {
+    display: none!important;
 }
 
 .card-item{

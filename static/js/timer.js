@@ -1,13 +1,4 @@
-function myFunction() {
-  var x = document.getElementById("userId").value;
-  document.getElementById("demo").innerHTML = x;
-}
 
-
-
-//$("#payment-form").onck(function() {
-//    var 
-//});
 
 var time_quantity = $("#time-quantity").val();
 var time_scale = $("#time-scale").val();
