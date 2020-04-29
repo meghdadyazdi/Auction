@@ -1,10 +1,8 @@
 
 
-var time_quantity = $("#time-quantity").val();
-var time_scale = $("#time-scale").val();
+var time_quantity = document.getElementById("time-quantity");
+var time_scale = document.getElementById("time-scale");
 console.log(time_scale);
-//var time_scale = document.getElementById("userId");
-
 
 if (time_scale == "Minutes") {var auction_time = time_quantity * 60;}
 if (time_scale == "Hours") {var auction_time = time_quantity * 60 * 60;}
@@ -13,7 +11,7 @@ if (time_scale == "Days") {var auction_time = time_quantity * 60 * 60 * 24;}
 
 var nowFix = new Date();
 nowFix = (Date.parse(nowFix) / 1000) + auction_time;
-console.log(nowFix);
+//console.log(nowFix);
 var days; 
 var hours;
 var minutes;
@@ -37,7 +35,7 @@ function makeTimer() {
             //var timeLeft = endTime - now;
             var timeLeft = nowFix - now;
            
-            console.log(timeLeft)
+            //console.log(timeLeft)
             
 
 			days = Math.floor(timeLeft / 86400); 
