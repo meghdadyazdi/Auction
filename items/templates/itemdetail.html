@@ -15,7 +15,7 @@
       </div>
       
     </form> -->
-    <div class="d-none" id="start_auction">
+    <div class="" id="start_auction">
     <p><span class="">Choose how long you want to auction your item: </span></p>
       <input type="number" id="time-quantity" name="time-quantity" min="1" max="60" />
       <select id="time-scale" name="time-scale">
@@ -24,7 +24,7 @@
         <option value="Days">Days</option>
       </select>
       <span class="input-group-btn" id="start-auction">
-        <button class="btn btn-success" type="submit">Start auction</button>
+        <button class="btn btn-success" type="submit">Start auction</button>btn btn-danger
         <p id="demo"></p>
       </span>
     </div>
@@ -66,25 +66,25 @@
   <div class="" id="bidding">
     <p>Offer a higher bid and win this item</p>
     {% if item.price <= 500 %}
-    <spam class="" id="1a">+1</spam>
-    <spam class="" id="5a">+5</spam>
-    <spam class="" id="10a">+10</spam>
-    <spam class="" id="20a">+20</spam>
+    <button class="btn btn-danger" type="" id="1a">+1</button>
+    <button class="btn btn-danger" type="" id="5a">+5</button>
+    <button class="btn btn-danger" type="" id="10a">+10</button>
+    <button class="btn btn-danger" type="" id="20a">+20</button>
     {% elif item.price > 500 and item.price <= 1000 %}
-    <spam class="" id="10b">+10</spam>
-    <spam class="" id="20b">+20</spam>
-    <spam class="" id="50b">+50</spam>
-    <spam class="" id="100b">+100</spam>
+    <button class="btn btn-danger" type="" id="10b">+10</button>
+    <button class="btn btn-danger" type="" id="20b">+20</button>
+    <button class="btn btn-danger" type="" id="50b">+50</button>
+    <button class="btn btn-danger" type="" id="100b">+100</button>
     {% elif item.price > 1000 and item.price <= 5000 %}
-    <spam class="" id="50c">+50</spam>
-    <spam class="" id="100c">+100</spam>
-    <spam class="" id="200c">+200</spam>
-    <spam class="" id="500c">+500</spam>
+    <button class="btn btn-danger" type="" id="50c">+50</button>
+    <button class="btn btn-danger" type="" id="100c">+100</button>
+    <button class="btn btn-danger" type="" id="200c">+200</button>
+    <button class="btn btn-danger" type="" id="500c">+500</button>
     {% else %}
-    <spam class="" id="200d">+200</spam>
-    <spam class="" id="500d">+500</spam>
-    <spam class="" id="1000d">+1000</spam>
-    <spam class="" id="5000d">+5000</spam>
+    <button class="btn btn-danger" type="" id="200d">+200</button>
+    <button class="btn btn-danger" type="" id="500d">+500</button>
+    <button class="btn btn-danger" type="" id="1000d">+1000</button>
+    <button class="btn btn-danger" type="" id="5000d">+5000</button>
     {% endif %}
   </div>
   </div>

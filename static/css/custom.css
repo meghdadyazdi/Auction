@@ -30,9 +30,6 @@ body {
     padding-top: 20px;
 }
 
-.d-none {
-    display: none!important;
-}
 
 .card-item{
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -40,8 +37,9 @@ body {
   border-radius: 2px;
   margin: 0 0 40px 20px;
   height: 300px;
-  width: 200px;
+  width: 200px !important;
   background-color: #fff;
+  flex: 0 0 0%!important;
 }
 
 .img-item{
