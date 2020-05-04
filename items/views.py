@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Item
 from .forms import ItemForm
@@ -34,6 +34,8 @@ def start_auction(request, pk):
     """
     item = get_object_or_404(Item, pk=pk)
     item.auction_status = 1
+    auction_time_start = timezone.now()
+    item.auction_time_start = auction_time_start.strftime("%Y-%m-%d %H:%M:%S")
     item.save()
     return render(request, "itemdetail.html", {'item': item})
 
