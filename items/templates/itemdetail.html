@@ -13,50 +13,30 @@
       </div>
       
     </form> -->
-    <input type="hidden" id="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
-    <input type="hidden" id="auction_time_start" name="auction_time_start" value="{{ item.auction_time_start }}"/>
-    <input type="hidden" id="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
-    <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
-
-    
-
-    {% if item.seller == user.username %}
-    <div class="" id="auction_duration">
-    <div class="" id="auction_time-select">
-    <p><span class="">Choose how long you want to auction your item: </span></p>
-      <input class="" type="number" id="time-quantity" name="time-quantity" min="1" max="60" value="1"/>
-      <select class="" id="time-scale" name="time-scale">
-        <option value="Minutes">Minutes</option>
-        <option value="Hours" selected>Hours</option>
-        <option value="Days">Days</option>        
-      </select>
-     
-      <span class="input-group-btn" id="">
-       <button class="btn btn-success" id="auction-set-time" type="submit">Set</button>
-        <!-- <a class="" id="" href="{% url 'start_auction' item.id %}">Select</a>         -->
-      </span>
-      </div>
-       <div class="d-none" id="announce-time">
-          <p>Your item will be auctioned for
-          <span id="auction-time-quantity"></span>
-          <span>  </span>
-          <span id="auction-time-scale"></span>
-          </p> 
-       </div>
-
-       <form method="post" action="{% url 'start_auction' item.id %}" class="accountform">
-            {% csrf_token %}
-            <input type="hidden" id="end-time-fix-form" name="end-time-fix-form" value="5"/>
-            <input type="hidden" id="auction-time-form" name="auction-time-form" value="50"/>
-            <button class="d-none btn btn-success" id="auction_start" type="submit" >Starttt</button>
-    </form>
-
-
-
-       
-    </div>
-    {% endif %}
-      
+    <input
+      type="hidden"
+      id="auction_status"
+      name="auction_status"
+      value="{{ item.auction_status }}"
+    />
+    <input
+      type="hidden"
+      id="auction_time_start"
+      name="auction_time_start"
+      value="{{ item.auction_time_start }}"
+    />
+    <input
+      type="hidden"
+      id="end-time-fix"
+      name="end-time-fix"
+      value="{{item.auction_end_time}}"
+    />
+    <input
+      type="hidden"
+      id="auction-time"
+      name="auction-time"
+      value="{{item.auction_duration_time}}"
+    />
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -65,16 +45,81 @@
       <div class="timer" id="seconds"></div>
     </div>
 
-    <div class="d-none" id="end_auction">
+    {% if item.seller == user.username %}
+    <div class="" id="auction_duration">
+      <div class="" id="auction_time-select">
+        <p>
+          <span class="">Choose how long you want to auction your item: </span>
+        </p>
+        <input
+          class=""
+          type="number"
+          id="time-quantity"
+          name="time-quantity"
+          min="1"
+          max="60"
+          value="1"
+        />
+        <select class="" id="time-scale" name="time-scale">
+          <option value="Minutes">Minutes</option>
+          <option value="Hours" selected>Hours</option>
+          <option value="Days">Days</option>
+        </select>
+
+        <span class="input-group-btn" id="">
+          <button class="btn btn-success" id="auction-set-time" type="submit">
+            Set
+          </button>
+        </span>
+      </div>
+      <div class="d-none" id="announce-time">
+        <p>
+          Your item will be auctioned for
+          <span id="auction-time-quantity"></span>
+          <span> </span>
+          <span id="auction-time-scale"></span>
+        </p>
+      </div>
+
+      <form method="post" action="{% url 'start_auction' item.id %}" class="accountform">
+        {% csrf_token %}
+        <input type="hidden" id="end-time-fix-form" name="end-time-fix-form" value=""/>
+        <input type="hidden" id="auction-time-form" name="auction-time-form" value=""/>
+        <button class="d-none btn btn-success" id="auction_start" type="submit">Start</button>
+      </form>
+    </div>
+    {% endif %}
+    
+    <p class="">Initial price : <span>{{item.price}} €</span></p>
+    
+    
+    {% if item.highest_bid_offer == 0 %}
+    <div class="d-none" id="end-auction-no-bid">
+      <p>Auction is finished. No one bidded this item.</p>
+    </div>
+
+    <div class="" id="status-no-bid">
+      <p>
+        No bid yet!
+      </p>
+    </div>
+    {%else%}
+
+    <div class="d-none" id="end-auction-winner">
       <p>Auction is finished. Winner is: {{item.highest_bid_user}}</p>
     </div>
 
-    <div class="" id="status">
+    <div class="" id="status-highest">
       <p>
         The highest bid so far is {{item.highest_bid_offer}} by
         {{item.highest_bid_user}}
       </p>
     </div>
+    {% endif %}
+
+
+    
+    
 
     {% if item.seller != user.username %}
     <div class="" id="before_auction">
@@ -91,33 +136,51 @@
         blocked from bidding this item
       </p>
     </div>
-    {% endif %} {% if item.seller != user.username %}
+    {% endif %}
+    
+    
+    
+    
+    
+    
+    {% if item.seller != user.username %}
     <div class="" id="bidding">
-      <p>Offer a higher bid and win this item</p>
+      <p>Place a bid and win this item</p>
+      <div class="">Bid:</div>
       {% if item.price <= 500 %}
-      <button class="btn btn-danger" type="" id="1a">+1</button>
-      <button class="btn btn-danger" type="" id="5a">+5</button>
-      <button class="btn btn-danger" type="" id="10a">+10</button>
-      <button class="btn btn-danger" type="" id="20a">+20</button>
+      <button class="btn btn-danger" type="" id="1a">+1€</button>
+      <button class="btn btn-danger" type="" id="5a">+5€</button>
+      <button class="btn btn-danger" type="" id="10a">+10€</button>
+      <button class="btn btn-danger" type="" id="20a">+20€</button>
       {% elif item.price > 500 and item.price <= 1000 %}
-      <button class="btn btn-danger" type="" id="10b">+10</button>
-      <button class="btn btn-danger" type="" id="20b">+20</button>
-      <button class="btn btn-danger" type="" id="50b">+50</button>
-      <button class="btn btn-danger" type="" id="100b">+100</button>
+      <button class="btn btn-danger" type="" id="10b">+10€</button>
+      <button class="btn btn-danger" type="" id="20b">+20€</button>
+      <button class="btn btn-danger" type="" id="50b">+50€</button>
+      <button class="btn btn-danger" type="" id="100b">+100€</button>
       {% elif item.price > 1000 and item.price <= 5000 %}
-      <button class="btn btn-danger" type="" id="50c">+50</button>
-      <button class="btn btn-danger" type="" id="100c">+100</button>
-      <button class="btn btn-danger" type="" id="200c">+200</button>
-      <button class="btn btn-danger" type="" id="500c">+500</button>
+      <button class="btn btn-danger" type="" id="50c">+50€</button>
+      <button class="btn btn-danger" type="" id="100c">+100€</button>
+      <button class="btn btn-danger" type="" id="200c">+200€</button>
+      <button class="btn btn-danger" type="" id="500c">+500€</button>
       {% else %}
-      <button class="btn btn-danger" type="" id="200d">+200</button>
-      <button class="btn btn-danger" type="" id="500d">+500</button>
-      <button class="btn btn-danger" type="" id="1000d">+1000</button>
-      <button class="btn btn-danger" type="" id="5000d">+5000</button>
+      <button class="btn btn-danger" type="" id="200d">+200€</button>
+      <button class="btn btn-danger" type="" id="500d">+500€</button>
+      <button class="btn btn-danger" type="" id="1000d">+1000€</button>
+      <button class="btn btn-danger" type="" id="5000d">+5000€</button>
       {% endif %}
     </div>
     {% endif %}
+  
+
+  <div class="d-none" id="confirm-bid">Confirm your new bid </div>
+  <form method="post" action="{% url 'start_auction' item.id %}" class="accountform p0">
+        {% csrf_token %}
+        <input type="hidden" id="higher-bid" name="higher-bid" value=""/>
+        <button class="d-none btn btn-success" id="higher-bid-confirm" type="submit">Confirm</button>
+  </form>
   </div>
+
+
 
   <div class="col-12 col-md-8">
     {% if user.username %}
