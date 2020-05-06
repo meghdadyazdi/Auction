@@ -80,7 +80,8 @@ $(document).ready(function () {
           $("#seconds").html(seconds + "<span class='digits'>Seconds</span>");
         }
       };
-      setInterval($.fn.makeTimer, 1000); //setInterval(function () {makeTimer();}, 1000);
+      interval = setInterval($.fn.makeTimer, 1000); //setInterval(function () {makeTimer();}, 1000);
+      if((endFix - now) < 0) {clearInterval(interval);}
     }
   
 });

@@ -15,8 +15,8 @@
     </form> -->
     <input type="hidden" id="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
     <input type="hidden" id="auction_time_start" name="auction_time_start" value="{{ item.auction_time_start }}"/>
-    <input type="hidden" id="end-time-fix" name="end-time-fix" value=""/>
-    <input type="hidden" id="auction-time" name="auction-time" value=""/>
+    <input type="hidden" id="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
+    <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
 
     
 
