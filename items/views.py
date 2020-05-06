@@ -28,18 +28,6 @@ def item_detail(request, pk):
     return render(request, "itemdetail.html", {'item': item})
 
 
-def start_auction(request, pk):
-    """
-    start the auction
-    """
-    item = get_object_or_404(Item, pk=pk)
-    item.auction_status = 1
-    auction_time_start = timezone.now()
-    item.auction_time_start = auction_time_start.strftime("%Y-%m-%d %H:%M:%S")
-    item.save()
-    return render(request, "itemdetail.html", {'item': item})
-
-
 @login_required
 def add_or_edit_item(request, pk=None):
     """
@@ -49,7 +37,8 @@ def add_or_edit_item(request, pk=None):
     Only the creator can edit the item.
     Creator can not edit after auction starts
     """
-    item = get_object_or_404(Item, pk=pk) if pk else None  # pk if you are editing, No pk if you are adding
+    # pk if you are editing, No pk if you are adding
+    item = get_object_or_404(Item, pk=pk) if pk else None
     if request.method == "POST":
         form = ItemForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
