@@ -24,11 +24,11 @@ def start_bid(request, pk):
     bidding
     """
     item = get_object_or_404(Item, pk=pk)
-    # item.highest_bid_offer = request.POST.get('higher-bid')
-    # item.highest_bid_user = request.POST.get('higher-bid-user')
-    # print(item.highest_bid_offer)
-    # print(item.highest_bid_user)
-    # item.save()
+    item.highest_bid_offer = request.POST.get('higher-bid')
+    item.highest_bid_user = request.POST.get('higher-bid-user')
+    print(item.highest_bid_offer)
+    print(item.highest_bid_user)
+    item.save()
     return render(request, "itemdetail.html", {'item': item})
 
 # def start_bid(request, pk):
