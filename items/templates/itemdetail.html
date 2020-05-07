@@ -65,7 +65,7 @@
     <p class="">Initial price : <span>{{item.price}} €</span></p>
     
     
-    {% if item.highest_bid_offer == 0 %}
+    {% if item.highest_bid_offer == item.price %}
     <div class="d-none" id="end-auction-no-bid">
       <p>Auction is finished. No one bidded this item.</p>
     </div>
@@ -147,8 +147,9 @@
   <div class="d-none" id="confirm-bid">Confirm your new bid </div>
 
 
-  <form method="post" action="{% url 'start_bid' item.id %}" class="accountform p0">
+  <form method="post" action="{% url 'start_auction' item.id %}" class="accountform p0">
         {% csrf_token %}
+        <input type="hidden" id="form-2" name="form-2" value="1"/>
         <input type="hidden" id="higher-bid" name="higher-bid" value=""/>
         <input type="hidden" id="higher-bid-user" name="higher-bid-user" value=""/>
         <button class="d-none btn btn-success" id="higher-bid-confirm" type="submit">Confirm</button>

@@ -51,6 +51,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(5)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#10a").click(function () {
@@ -59,6 +60,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(10)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#20a").click(function () {
@@ -67,6 +69,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(20)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
 
@@ -77,6 +80,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(10)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#20b").click(function () {
@@ -85,6 +89,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(20)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#50b").click(function () {
@@ -93,6 +98,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(50)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#100b").click(function () {
@@ -101,6 +107,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(100)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
 
@@ -110,6 +117,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(50)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#100c").click(function () {
@@ -118,6 +126,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(100)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#200c").click(function () {
@@ -126,6 +135,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(200)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#500c").click(function () {
@@ -134,6 +144,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(500)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
 
@@ -143,6 +154,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(200)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#500d").click(function () {
@@ -151,6 +163,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(500)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#1000d").click(function () {
@@ -159,6 +172,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(1000)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
   $("#5000d").click(function () {
@@ -167,6 +181,7 @@ $(document).ready(function () {
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
     $("#higher-bid").val(5000)
+    $("#higher-bid-user").val($("#user-name").val())
   });
 
 
