@@ -163,7 +163,7 @@ body {
 /* buttons____________________________________________ */
 .btn-danger{
     margin: 2px;
-    width: 100px;
+    width: 80px;
 }
 .btn-danger:focus {
     box-shadow: 0 0 0 0.1rem rgba(225,83,97,.5) !important;

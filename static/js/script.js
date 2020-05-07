@@ -23,6 +23,7 @@ $(document).ready(function () {
     endFix = Date.parse(endFix) / 1000 + auction_time;
     $("#end-time-fix-form").val(endFix);
     $("#auction-time-form").val(auction_time);
+    // $("#auction-price-form").val(112);
     console.log(endFix);
     tt = $("#auction_time_start").val();
     console.log(time_scale);
@@ -31,11 +32,17 @@ $(document).ready(function () {
 
 
 
+
+
+
   $("#1a").click(function () {
     $(".btn-danger").addClass("d-none");
     $("#1a").removeClass("d-none");
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(1)
+    $("#higher-bid-user").val($("#user-name").val())
+    
   });
 
   $("#5a").click(function () {
@@ -43,6 +50,7 @@ $(document).ready(function () {
     $("#5a").removeClass("d-none");
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(5)
   });
 
   $("#10a").click(function () {
@@ -50,6 +58,7 @@ $(document).ready(function () {
     $("#10a").removeClass("d-none");
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(10)
   });
 
   $("#20a").click(function () {
@@ -57,7 +66,123 @@ $(document).ready(function () {
     $("#20a").removeClass("d-none");
     $("#higher-bid-confirm").removeClass("d-none");
     $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(20)
   });
+
+
+
+  $("#10b").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#10b").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(10)
+  });
+
+  $("#20b").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#20b").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(20)
+  });
+
+  $("#50b").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#50b").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(50)
+  });
+
+  $("#100b").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#100b").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(100)
+  });
+
+
+  $("#50c").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#50c").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(50)
+  });
+
+  $("#100c").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#100c").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(100)
+  });
+
+  $("#200c").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#200c").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(200)
+  });
+
+  $("#500c").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#500c").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(500)
+  });
+
+
+  $("#200d").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#200d").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(200)
+  });
+
+  $("#500d").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#500d").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(500)
+  });
+
+  $("#1000d").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#1000d").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(1000)
+  });
+
+  $("#5000d").click(function () {
+    $(".btn-danger").addClass("d-none");
+    $("#5000d").removeClass("d-none");
+    $("#higher-bid-confirm").removeClass("d-none");
+    $("#confirm-bid").removeClass("d-none");
+    $("#higher-bid").val(5000)
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

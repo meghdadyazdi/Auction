@@ -13,30 +13,11 @@
       </div>
       
     </form> -->
-    <input
-      type="hidden"
-      id="auction_status"
-      name="auction_status"
-      value="{{ item.auction_status }}"
-    />
-    <input
-      type="hidden"
-      id="auction_time_start"
-      name="auction_time_start"
-      value="{{ item.auction_time_start }}"
-    />
-    <input
-      type="hidden"
-      id="end-time-fix"
-      name="end-time-fix"
-      value="{{item.auction_end_time}}"
-    />
-    <input
-      type="hidden"
-      id="auction-time"
-      name="auction-time"
-      value="{{item.auction_duration_time}}"
-    />
+    <input type="hidden" id="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
+    <input type="hidden" id="auction_time_start" name="auction_time_start" value="{{ item.auction_time_start }}"/>
+    <input type="hidden" id="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
+    <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
+    <input type="hidden" id="user-name" name="user-name" value="{{user.username}}"/>
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -51,15 +32,7 @@
         <p>
           <span class="">Choose how long you want to auction your item: </span>
         </p>
-        <input
-          class=""
-          type="number"
-          id="time-quantity"
-          name="time-quantity"
-          min="1"
-          max="60"
-          value="1"
-        />
+        <input class="" type="number" id="time-quantity" name="time-quantity" min="1" max="60" value="1"/>
         <select class="" id="time-scale" name="time-scale">
           <option value="Minutes">Minutes</option>
           <option value="Hours" selected>Hours</option>
@@ -67,9 +40,7 @@
         </select>
 
         <span class="input-group-btn" id="">
-          <button class="btn btn-success" id="auction-set-time" type="submit">
-            Set
-          </button>
+          <button class="btn btn-success" id="auction-set-time" type="submit">Set</button>
         </span>
       </div>
       <div class="d-none" id="announce-time">
@@ -83,8 +54,9 @@
 
       <form method="post" action="{% url 'start_auction' item.id %}" class="accountform">
         {% csrf_token %}
-        <input type="hidden" id="end-time-fix-form" name="end-time-fix-form" value=""/>
-        <input type="hidden" id="auction-time-form" name="auction-time-form" value=""/>
+        <input type="hidden" id="end-time-fix-form" name="end-time-fix-form" value="0"/>
+        <input type="hidden" id="auction-time-form" name="auction-time-form" value="0"/>
+        <!-- <input type="hidden" id="auction-price-form" name="auction-price-form" value="0"/> -->
         <button class="d-none btn btn-success" id="auction_start" type="submit">Start</button>
       </form>
     </div>
@@ -173,9 +145,12 @@
   
 
   <div class="d-none" id="confirm-bid">Confirm your new bid </div>
-  <form method="post" action="{% url 'start_auction' item.id %}" class="accountform p0">
+
+
+  <form method="post" action="{% url 'start_bid' item.id %}" class="accountform p0">
         {% csrf_token %}
         <input type="hidden" id="higher-bid" name="higher-bid" value=""/>
+        <input type="hidden" id="higher-bid-user" name="higher-bid-user" value=""/>
         <button class="d-none btn btn-success" id="higher-bid-confirm" type="submit">Confirm</button>
   </form>
   </div>
