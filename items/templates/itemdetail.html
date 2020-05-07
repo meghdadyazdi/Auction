@@ -141,7 +141,7 @@
       <button class="btn btn-danger" type="" id="5000d">+5000€</button>
       {% endif %}
     </div>
-    {% else %}
+    {% elif not user.username %}
     <div><p>To place a bid you should log in or sign up</p></div>
     {% endif %}
   
