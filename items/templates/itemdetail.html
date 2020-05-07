@@ -115,7 +115,7 @@
     
     
     
-    {% if item.seller != user.username %}
+    {% if user.username and item.seller != user.username %}
     <div class="" id="bidding">
       <p>Place a bid and win this item</p>
       <div class="">Bid:</div>
@@ -141,6 +141,8 @@
       <button class="btn btn-danger" type="" id="5000d">+5000€</button>
       {% endif %}
     </div>
+    {% else %}
+    <div><p>To place a bid you should log in or sign up</p></div>
     {% endif %}
   
 
