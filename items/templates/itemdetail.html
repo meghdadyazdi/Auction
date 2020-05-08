@@ -18,6 +18,7 @@
     <input type="hidden" id="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
     <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
     <input type="hidden" id="user-name" name="user-name" value="{{user.username}}"/>
+    <input type="hidden" id="bid-offer" name="bid-offer" value="0"/>
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -83,7 +84,7 @@
 
     <div class="" id="status-highest">
       <p>
-        The highest bid so far is {{item.highest_bid_offer}} by
+        The highest bid so far is {{item.highest_bid_offer}} € by
         {{item.highest_bid_user}}
       </p>
     </div>
@@ -170,7 +171,7 @@
       <img class="img-detail" src="/media/{{ item.image }}" />
     </div>
     {% endif %}
-    <h3>{{ item.title }}</h3>
+    <h3>{{ item.title }} ({{item.seller}})</h3>
     <p>
       <span class="boldtext"><i class="far fa-eye"></i></span> {{item.views}}
     </p>

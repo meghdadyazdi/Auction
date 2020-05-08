@@ -222,9 +222,9 @@ $(document).ready(function () {
       seconds = Math.floor(
         timeLeft - days * 86400 - hours * 3600 - minutes * 60
       );
-      console.log(now);
-      console.log(endFix);
-      console.log(endFix - now);
+    //   console.log(now);
+    //   console.log(endFix);
+    //   console.log(endFix - now);
 
       if (hours < "10") {
         hours = "0" + hours;
@@ -235,6 +235,13 @@ $(document).ready(function () {
       if (seconds < "10") {
         seconds = "0" + seconds;
       }
+
+    //   console.log(hours);
+    //   console.log(minutes);
+    //   console.log(seconds);
+    //   console.log(days);
+      
+
       if (hours >= 0 && minutes >= 0 && seconds >= 0 && days >= 0) {
         //console.log(days);
         $("#days").html(days + "<span class='digits'>Days</span>");
@@ -242,10 +249,22 @@ $(document).ready(function () {
         $("#minutes").html(minutes + "<span class='digits'>Minutes</span>");
         $("#seconds").html(seconds + "<span class='digits'>Seconds</span>");
       }
+      else{
+          $("#bidding").addClass('d-none');
+          $("#bid-offer").val("1");
+      }
     };
-    interval = setInterval($.fn.makeTimer, 1000); //setInterval(function () {makeTimer();}, 1000);
-    if (endFix - now < 0) {
-      clearInterval(interval);
+    var now = new Date();
+    now = Date.parse(now) / 1000;
+    console.log((endFix - now) / 1000);
+    // interval = setInterval($.fn.makeTimer, 1000); //setInterval(function () {makeTimer();}, 1000);
+    if ((endFix - now) > 0) {
+        // clearInterval($.fn.makeTimer);
+        setInterval($.fn.makeTimer, 1000);
     }
   }
+  //console.log($("#bid-offer").val())
+  if ((endFix - now) < 0){
+        $("#bidding").addClass('d-none');
+    }
 });
