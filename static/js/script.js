@@ -30,6 +30,7 @@ $(document).ready(function () {
     console.log(time_quantity);
   });
 
+  
 
 
 
@@ -206,7 +207,7 @@ $(document).ready(function () {
     $("#auction_duration").addClass("d-none");
     $("#before_auction").addClass("d-none");
     var endFix = $("#end-time-fix").val();
-    console.log(endFix);
+    //console.log(endFix);
 
     var days;
     var hours;
@@ -220,8 +221,7 @@ $(document).ready(function () {
       hours = Math.floor((timeLeft - days * 86400) / 3600);
       minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60);
       seconds = Math.floor(
-        timeLeft - days * 86400 - hours * 3600 - minutes * 60
-      );
+        timeLeft - days * 86400 - hours * 3600 - minutes * 60);
     //   console.log(now);
     //   console.log(endFix);
     //   console.log(endFix - now);
@@ -251,12 +251,14 @@ $(document).ready(function () {
       }
       else{
           $("#bidding").addClass('d-none');
-          $("#bid-offer").val("1");
+          $("#status-highest").addClass('d-none');
+          $("#end-auction-winner").removeClass('d-none');
+          $("#winner").removeClass('d-none');
       }
     };
     var now = new Date();
     now = Date.parse(now) / 1000;
-    console.log((endFix - now) / 1000);
+    //console.log((endFix - now) / 1000);
     // interval = setInterval($.fn.makeTimer, 1000); //setInterval(function () {makeTimer();}, 1000);
     if ((endFix - now) > 0) {
         // clearInterval($.fn.makeTimer);
@@ -266,5 +268,8 @@ $(document).ready(function () {
   //console.log($("#bid-offer").val())
   if ((endFix - now) < 0){
         $("#bidding").addClass('d-none');
+        $("#status-highest").addClass('d-none');
+        $("#end-auction-winner").removeClass('d-none');
+        $("#winner").removeClass('d-none');
     }
 });
