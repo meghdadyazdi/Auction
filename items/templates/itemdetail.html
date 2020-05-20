@@ -1,18 +1,13 @@
-{% extends "base.html" %} {% load static from staticfiles %} {% block head_js %}
-<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% extends "base.html" %}
+{% load static from staticfiles %}
 
-{% endblock %} {% block content %}
+{% block head_js %}
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
+{% block content %}
 <div class="row">
   <div class="col-12 col-md-4 text-center">
-    <!-- <form method="post" action="{% url 'item_detail' item.id %}">
-      {% csrf_token %}
-      <div class="input-group">
-        
-        
-        
-      </div>
-      
-    </form> -->
     <input type="hidden" id="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
     <input type="hidden" id="auction_time_start" name="auction_time_start" value="{{ item.auction_time_start }}"/>
     <input type="hidden" id="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
@@ -100,9 +95,6 @@
     {% endif %}
 
 
-    
-    
-
     {% if item.seller != user.username %}
     <div class="" id="before_auction">
       <p>The seller has not started the auction yet</p>
@@ -112,9 +104,10 @@
     {% if item.highest_bid_user == user.username %}
     <div class="d-none" id="winner">
       <p>Now you can pay</p>
-      <span class="input-group-btn" id="pay">
-        <button class="btn btn-success" type="submit">Pay</button>
-      </span>
+      <div class="row">
+      <a href="{% url 'payment' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+    </div>
+
       <p>
         If you don't pay in 24 hours you cannnot pay it anymore and you will be
         blocked from bidding this item
@@ -196,13 +189,11 @@
     <p>{{ item.description }}</p>
     <p><span class="boldtext">Published on:</span> {{ item.published_date }}</p>
     <p><span class="boldtext">#</span> {{ item.tag }}</p>
-    <a href="{% url 'get_items' %}" class="btn btn-default">Home</a>
+    <a href="{% url 'get_items' %}" class="btn btn-dark">Home</a>
     {% if user.username and user.username == item.seller %}
-    <a href="{% url 'edit_item' item.id%}" class="btn btn-default">Edit item</a>
+    <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>
     {% endif %}
     <hr />
-    <!-- </div>
-    </div> -->
   </div>
 </div>
 
