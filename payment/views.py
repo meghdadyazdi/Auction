@@ -13,7 +13,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 # @login_required()
-def payment(request):
+def payment(request, pk=None):
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -47,7 +47,7 @@ def payment(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 # request.session['cart'] = {}
-                return redirect(reverse('products'))
+                return redirect(reverse('items'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
