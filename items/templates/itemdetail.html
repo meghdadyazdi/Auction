@@ -103,6 +103,9 @@
     
     {% if item.highest_bid_user == user.username %}
     <div class="d-none" id="winner">
+    {% if item.sold == 1 %}
+      <div>You have already paid</div>
+    {% else%}
       <p>Now you can pay</p>
       <div class="row">
       <a href="{% url 'payment' item.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
@@ -111,8 +114,9 @@
       <p>
         If you don't pay in 24 hours you cannnot pay it anymore and you will be
         blocked from bidding this item
-      </p>
+      </p>{% endif%}
     </div>
+    
     {% endif %}
     
     

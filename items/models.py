@@ -23,6 +23,7 @@ class Item(models.Model):
     auction_status = models.IntegerField(default=0)
     auction_end_time = models.IntegerField(default=0, null=True)
     auction_duration_time = models.IntegerField(default=0, null=True)
+    sold = models.IntegerField(default=0)
     comment_seller = models.TextField(default="No comment yet")
     comment_winner = models.TextField(default="No comment yet")
     timer = models.DateTimeField(auto_now_add=False, blank=True, null=True)

@@ -22,10 +22,6 @@ def payment(request, pk):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
-            # cart = request.session.get('cart', {})
-            total = 0
-
             item = get_object_or_404(Item, pk=pk)
             total = item.highest_bid_offer
             try:
@@ -40,7 +36,8 @@ def payment(request, pk):
 
             if customer.paid:
                 messages.error(request, "You have successfully paid")
-                # request.session['cart'] = {}
+                item.sold = 1
+                item.save()
                 return redirect(reverse('get_items'))
             else:
                 messages.error(request, "Unable to take payment")
