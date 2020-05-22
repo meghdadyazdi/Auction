@@ -13,7 +13,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 # @login_required()
-def payment(request, pk=None):
+def payment(request, pk):
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -26,17 +26,11 @@ def payment(request, pk=None):
             # cart = request.session.get('cart', {})
             total = 0
 
-            item = get_object_or_404(Item, pk=id)
+            item = get_object_or_404(Item, pk=pk)
             total = item.highest_bid_offer
-            order_line_item = OrderLineItem(
-                    order=order,
-                    item=item
-                )
-            order_line_item.save()
-
             try:
                 customer = stripe.Charge.create(
-                    amount=int(total * 100),
+                    amount=int(total),
                     currency="EUR",
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
@@ -47,7 +41,7 @@ def payment(request, pk=None):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 # request.session['cart'] = {}
-                return redirect(reverse('items'))
+                return redirect(reverse('get_items'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -56,5 +50,7 @@ def payment(request, pk=None):
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
+        print(id)
+        item = get_object_or_404(Item, pk=pk)
 
-    return render(request, "payment.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "payment.html", {"item": item, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
