@@ -60,7 +60,7 @@
     <p class="">Initial price : <span>{{item.price}} €</span></p>
     
     
-    {% if item.highest_bid_offer == item.price %}
+    {% if item.highest_bid_offer == item.price and item.auction_status and not item.sold %}
     <div class="d-none" id="end-auction-no-bid">
       <p>Auction is finished. No one bidded this item.</p>
     </div>
@@ -76,19 +76,20 @@
     {% if item.highest_bid_user == user.username %}
       <p>Congragulations!! You won this item</p>
     {% else %}
-      <p>Auction is finished. Winner is: {{item.highest_bid_user}}</p>
+      <p>Auction is finished.</p>
+      <p>Winner is: <span class="winner"><i class="fas fa-trophy"></i> {{item.highest_bid_user}} <i class="fas fa-trophy"></i></span> by {{item.highest_bid_offer}} €</p>
     {% endif %}
     </div>
 
     <div class="" id="status-highest">
     {% if item.highest_bid_user == user.username %}
-      <p>The highest bid so far is {{item.highest_bid_offer}} € by
-        YOU
+      <p>The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
+        <strong>You</strong>
       </p>
-    {% else %}
+    {% elif item.auction_status %}
       <p>
-        The highest bid so far is {{item.highest_bid_offer}} € by
-        {{item.highest_bid_user}}
+        The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
+        <strong>{{item.highest_bid_user}}</strong>
       </p>
     {% endif %}
     </div>
@@ -124,10 +125,9 @@
     
     
     
-    {% if user.username and item.seller != user.username %}
+    {% if user.username and item.seller != user.username and item.auction_status %}
     <div class="" id="bidding">
-      <p>Place a bid and win this item</p>
-      <div class="">Bid:</div>
+      <div>Place a higher bid and win this item</div>
       {% if item.price <= 500 %}
       <button class="btn btn-danger" type="" id="1a">+1€</button>
       <button class="btn btn-danger" type="" id="5a">+5€</button>
@@ -150,8 +150,8 @@
       <button class="btn btn-danger" type="" id="5000d">+5000€</button>
       {% endif %}
     </div>
-    {% elif not user.username %}
-    <div><p>To place a bid you should log in or sign up</p></div>
+    {% elif not user.username and not item.sold%}
+    <div><p>To place a bid you should first <a class="" href="{% url 'login' %}">Log In</a> or <a class="" href="{% url 'register' %}">Register</a></p></div>
     {% endif %}
   
 
@@ -183,18 +183,14 @@
     <p>
       <span class="boldtext"><i class="far fa-eye"></i></span> {{item.views}}
     </p>
-    <p>
-      <span class="boldtext"><i class="far"></i></span> {{item.auction_status}}
-    </p>
     <p>{{ item.content }}</p>
     <p>
-      <span class="boldtext"><strong>Description:</strong></span>
+      <span class="boldtext"><strong>Description:</strong> {{ item.description }}</span>
     </p>
-    <p>{{ item.description }}</p>
     <p><span class="boldtext">Published on:</span> {{ item.published_date }}</p>
     <p><span class="boldtext">#</span> {{ item.tag }}</p>
     <a href="{% url 'get_items' %}" class="btn btn-dark">Home</a>
-    {% if user.username and user.username == item.seller %}
+    {% if user.username and user.username == item.seller  and not item.auction_status %}
     <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>
     {% endif %}
     <hr />

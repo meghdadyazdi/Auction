@@ -146,6 +146,10 @@ body {
    filter: alpha(opacity=0);
 }
 
+.fa-trophy{
+    color: rgb(255,223,0)
+}
+
 
 
 
@@ -159,11 +163,11 @@ body {
   line-height: 1;
   padding: 5px;
   margin-top: 20px;
-  font-size: 60px;
+  font-size: 50px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
- .digits {
+.digits {
   display: block;
   font-size: 15px;
   color: #111;
@@ -182,7 +186,7 @@ body {
 }
 
 #seconds {
-  font-size: 30px;
+  font-size: 25px;
   color: #abcd58;
 }
 /* buttons____________________________________________ */
@@ -203,3 +207,27 @@ footer {
     padding-bottom: 40px;
     color: #A9A9A9;
 }
+
+/*-------------------------------Media Query-----------------------------------*/
+
+@media only screen and (max-width: 576px) {
+    #seconds {
+        font-size: 25px;
+    }
+
+    .timer {
+        font-size: 40px;
+    }
+  
+}
+
+/* @media only screen and (max-width: 780px) {
+    #seconds {
+        font-size: 25px;
+    }
+
+    .timer {
+        font-size: 50px;
+    }
+  
+} */
