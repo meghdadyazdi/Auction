@@ -74,10 +74,12 @@
 
     <div class="d-none" id="end-auction-winner">
     {% if item.highest_bid_user == user.username %}
+      {% if not item.sold%}
       <p>Congragulations!! You won this item</p>
+      {% endif%}
     {% else %}
       <p>Auction is finished.</p>
-      <p>Winner is: <span class="winner"><i class="fas fa-trophy"></i> {{item.highest_bid_user}} <i class="fas fa-trophy"></i></span> by {{item.highest_bid_offer}} €</p>
+      <p>Winner is: <span class="winner"><strong> {{item.highest_bid_user}}</strong><sup><i class="fas fa-trophy"></i></sup></span> by <strong>{{item.highest_bid_offer}} €</strong></p>
     {% endif %}
     </div>
 
@@ -106,6 +108,7 @@
     <div class="d-none" id="winner">
     {% if item.sold == 1 %}
       <div>You have already paid</div>
+      <div class="">The item will ship to youdress to:</div>
     {% else%}
       <p>Now you can pay</p>
       <div class="row">
@@ -184,11 +187,12 @@
       <span class="boldtext"><i class="far fa-eye"></i></span> {{item.views}}
     </p>
     <p>{{ item.content }}</p>
-    <p>
+    <div>
       <span class="boldtext"><strong>Description:</strong> {{ item.description }}</span>
-    </p>
-    <p><span class="boldtext">Published on:</span> {{ item.published_date }}</p>
-    <p><span class="boldtext">#</span> {{ item.tag }}</p>
+    </div>
+    <p class=""><span class="boldtext">#</span>{{ item.tag }}</p>
+    <p><i><span class="boldtext">Published on:</span> {{ item.published_date }}</i></p>
+    <p></p>
     <a href="{% url 'get_items' %}" class="btn btn-dark">Home</a>
     {% if user.username and user.username == item.seller  and not item.auction_status %}
     <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Item
 from .forms import ItemForm
+from payment.models import Order
 from django.contrib.auth.decorators import login_required
 
 

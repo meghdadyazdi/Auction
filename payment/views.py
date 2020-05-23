@@ -35,10 +35,10 @@ def payment(request, pk):
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                messages.error(request, "You have successfully paid for this item")
                 item.sold = 1
                 item.save()
-                return redirect(reverse('get_items'))
+                return render(request, "itemdetail.html", {'item': item})
             else:
                 messages.error(request, "Unable to take payment")
         else:
