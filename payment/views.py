@@ -26,7 +26,7 @@ def payment(request, pk):
             total = item.highest_bid_offer
             try:
                 customer = stripe.Charge.create(
-                    amount=int(total),
+                    amount=int(total*100),
                     currency="EUR",
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
