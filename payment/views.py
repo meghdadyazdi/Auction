@@ -22,6 +22,14 @@ def payment(request, pk):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
+
+            buyer_address = {
+                             'name': order.full_name,
+                             'street': order.street_address1,
+                             'postcode': order.town_or_city,
+                             'town': order.country,
+                             'country': order.postcode
+                            }
             item = get_object_or_404(Item, pk=pk)
             total = item.highest_bid_offer
             try:
@@ -38,7 +46,7 @@ def payment(request, pk):
                 messages.error(request, "You have successfully paid for this item")
                 item.sold = 1
                 item.save()
-                return render(request, "itemdetail.html", {'item': item})
+                return render(request, "itemdetail.html", {'item': item, 'buyer_address': buyer_address})
             else:
                 messages.error(request, "Unable to take payment")
         else:

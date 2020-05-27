@@ -107,8 +107,12 @@
     {% if item.highest_bid_user == user.username %}
     <div class="d-none" id="winner">
     {% if item.sold == 1 %}
-      <div>You have already paid</div>
-      <div class="">The item will ship to youdress to:</div>
+      <div>Thanks for your payment <strong>{{buyer_address.name}}</strong></div>
+      <div class="">The item will ship to your address to:</div>
+      <div class="">{{buyer_address.street}}</div>
+      <div class="">{{buyer_address.postcode}} {{buyer_address.town}}</div>
+      <div class="">{{buyer_address.country}}</div>
+      
     {% else%}
       <p>Now you can pay</p>
       <div class="row">
