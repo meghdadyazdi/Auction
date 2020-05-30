@@ -40,9 +40,6 @@
             <a class="nav-link" href="{% url 'new_item' %}"><i class="fas fa-plus"></i> Add your Item</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
           </li>
 
@@ -55,8 +52,8 @@
           </li>
           {% endif %}
           <li class="nav-item avatar">
-            <a class="nav-link p-0" href="#">
-              <i class="fas fa-sort-down"></i>
+            <a class="nav-link p-0" href="{% url 'profile' %}">
+              <i class="fas fa-user"></i> {{user.username}}
             </a>
           </li>
         </ul>
@@ -72,6 +69,10 @@
       </div>
     </div>
     {% endif %}
+    <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q">
+                <button type="submit">Search</button>
+            </form>
     <div class="container">
       {% block content %} {% endblock %}
     </div>

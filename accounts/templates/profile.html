@@ -2,4 +2,8 @@
 {% block content %}
     <h2>Success!</h2>
     <p>You are logged in as {{ user.email }} </p>
+    <p>You can <a class="" href="{% url 'new_item' %}">add</a> an item and start an auction to sell it </p>
+    <p>You can find the items you are selling or you sold <a class="" href="{% url 'search_user' %}">here</a></p>
+    <p>You can find the items you are biding or you have bought <a class="" href="{% url 'search_bid_or_bought_user' %}">here</a></p>
+    
 {% endblock %}

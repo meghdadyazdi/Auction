@@ -20,6 +20,7 @@ from items import urls as urls_items
 from start_Auction import urls as urls_start_Auction
 from payment import urls as urls_payment
 from django.views.static import serve
+from search_and_sort import urls as urls_search_and_sort
 from .settings import MEDIA_ROOT
 from django.views.generic import RedirectView
 
@@ -30,5 +31,6 @@ urlpatterns = [
     url(r'^items/', include(urls_items)),
     url(r'^items/', include(urls_start_Auction)),
     url(r'^payment/', include(urls_payment)),
+    url(r'^search/', include(urls_search_and_sort)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]

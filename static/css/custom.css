@@ -28,13 +28,8 @@ body {
     background-color: #fff;
 }
 
-.dropdown-content {
-    background-color: #fff;
-    width: 274px !important;
-    top: 64px !important;
-    transform-origin: 0% 0px !important;
-    opacity: 1;
-    transform: scaleX(1) scaleY(1) !important;
+.avatar {
+    margin: 8px 0 0 20px;
 }
 
 .accountform {
