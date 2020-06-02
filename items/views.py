@@ -4,6 +4,7 @@ from .models import Item
 from .forms import ItemForm
 from payment.models import Order
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 def get_items(request):
@@ -13,6 +14,9 @@ def get_items(request):
     """
     items = Item.objects.filter(published_date__lte=timezone.now()
                                 ).order_by('-published_date')
+    paginator = Paginator(items, 4)
+    page = request.GET.get('page', 1)
+    items = paginator.page(page)
     return render(request, "index.html", {'items': items})
 
 

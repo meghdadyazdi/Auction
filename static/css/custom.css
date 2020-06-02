@@ -2,15 +2,15 @@
 
 body {
     background-color: #f1f1f1;
-  /* padding-top: 50px; */
-  font-family: Arial;
+    margin: 0 10px 0px 10px;
+    font-family: Arial;
 }
 
 .navbar {
-    background-image: -webkit-linear-gradient(#111, #111 60%, #111);
-    background-image: -o-linear-gradient(#111, #111 60%, #111);
-    background-image: linear-gradient(#111, #111 60%, #111);
-    border-bottom: 1px solid #111;
+    background-image: -webkit-linear-gradient(#1d2124, #1d2124 60%, #1d2124);
+    background-image: -o-linear-gradient(#1d2124, #1d2124 60%, #1d2124);
+    background-image: linear-gradient(#1d2124, #1d2124 60%, #1d2124);
+    border-bottom: 1px solid #1d2124;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
@@ -36,6 +36,47 @@ body {
     padding-top: 20px;
 }
 
+.mycontainer{
+    margin-top: 4rem;
+}
+
+#search-box{
+    border-radius: 20px;
+    line-height: 33px;
+    padding-left: 20px;
+    width: 80%;
+}
+
+#search-form{
+    width: 80%;
+    text-align: center;
+}
+
+#search-btn{
+    margin-bottom: 6px;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
+input:focus {
+    outline-offset: 0;
+    outline: -webkit-focus-ring-color auto 0;
+}
+
+#auction-set-time{
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+#time-scale{
+    border-radius: 10px;
+}
+
+#time-quantity{
+    border-radius: 10px;
+    line-height: 20px;
+}
 
 .card-item{
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -96,6 +137,49 @@ body {
 .sold-price{
     font-size: 30px;
 }
+
+/* pagination__________________________________________________ */
+
+.pagination {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.pagination-current,
+.pagination-total {
+    padding: 0.5em 0.8em;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #343a40;
+    margin-top: 10px;
+}
+
+.pagination-total {
+    background-color: #B9B9B9;
+}
+
+.pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    color: #B9B9B9;
+    font-size: 1.3em;
+}
+
+.pagination-of {
+    color: #B9B9B9;
+    padding: 0 1em;
+    margin-top: 18px;
+}
+
+.pagination-action:hover {
+    color: #343a40;
+}
+
 /* img-detail__________________________________________________ */
 
 .img-detail{

@@ -1,7 +1,19 @@
-{% extends "base.html" %} {% block content %}<br><br><br>
-<div class="row m0 p0">
-  {% for item in items %}
+{% extends "base.html" %} {% block content %}
 
+
+
+<div class="row justify-content-center">
+<div class="col-12 col-xs-10 col-md-8">
+sort by:
+<p><a href="{% url 'sort_sold' %}">Sold</a></p>
+<p><a href="{% url 'sort_new' %}">newest</a></p>
+<p><a href="{% url 'sort_price' %}">price</a></p>
+
+</div>
+</div>
+
+<div class="row m0 p0 justify-content-center">
+  {% for item in items %}
   <div class="col-12 col-xs-6 col-md-4 card-item p0">
     <div class="img-container">
       <img class="img-item" src="/media/{{ item.image }}" />
@@ -12,31 +24,36 @@
       </div>
       {% endif%}
     </div>
-    <!-- <div class="card-container"> -->
     <h5 class="no-flow capital "><b>{{item.title}}</b></h5>
-    <!-- </div> -->
-    <!-- <div class="no-flow">
-      <strong> Title:</strong><i class="capital"> {{item.title}} </i>
-    </div> -->
     <div class="no-flow"><strong>Seller :</strong> {{item.seller}}</div>
     <div class="no-flow">
       <strong>Initial Price :</strong> <span>{{item.price}} €</span>
     </div>
-    <!-- <p class="no-flow m0 p0">
-					<strong>Recipe:</strong> {{item.title}}
-				</p> -->
     <a class="divLinkkk" href="{% url 'item_detail' item.id %}"></a>
   </div>
-  
-
-  
-  
-
   {% endfor %}
-
-
-
-
 </div>
 
+<div class="row m0 p0 justify-content-between justify-content-around">
+<div class="pagination">
+    {% if items.has_previous %}
+        <a class="pagination-action" href="?page=1">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ items.previous_page_number }}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+    <span class="pagination-current">{{ items.number }}</span>
+    <span class="pagination-of">of</span>
+    <span class="pagination-total">{{ items.paginator.num_pages }}</span>
+    {% if items.has_next %}
+        <a class="pagination-action" href="?page={{ items.next_page_number }}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ items.paginator.num_pages }}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+</div>
+</div>
 {% endblock %}

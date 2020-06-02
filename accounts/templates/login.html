@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
+<div class="row m0 p0 justify-content-center">
+<div class="col-12 col-xs-10 col-md-8">
     <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
         <fieldset class="form-group">
             <legend>Login</legend>
@@ -12,4 +14,6 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </fieldset>
     </form>
+</div>
+</div>
 {% endblock %}

@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
-{% block content %}<br><br><br>
-    <h1>New item</h1>
+{% block content %}
+<div class="row m0 p0 justify-content-md-center">
+    <div class="col-12 col-xs-10 col-md-8">
+    <h4>New item</h4>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <button type="submit" class="btn btn-info">Save</button>
     </form>
+    </div>
+</div>
 {% endblock %}
