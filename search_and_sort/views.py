@@ -10,7 +10,8 @@ from django.core.paginator import Paginator
 def general_search(request):
     # items = Item.objects.annotate(search=SearchVector('title', 'description', 'price', 'tag', 'published_date'),).filter(search=request.GET['q'])
     items = Item.objects.filter(title__icontains=request.GET['q'])
-    return render(request, "index.html", {"items": items})
+    check_for_pageing = True
+    return render(request, "index.html", {"items": items, 'check_for_pageing': check_for_pageing})
 
 
 def user_item_search(request):

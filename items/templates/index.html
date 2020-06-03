@@ -3,13 +3,17 @@
 
 
 <div class="row m0 p0 justify-content-center">
-<div class="col-12 col-xs-10 col-md-8">
-sort by:
-<p><a href="{% url 'sort_sold' %}">Sold</a></p>
-<p><a href="{% url 'sort_new' %}">newest</a></p>
-<p><a href="{% url 'sort_price' %}">price</a></p>
-
-</div>
+<!-- <div class="col-12 col-xs-10 col-md-8">sort by:</div> -->
+<div class="col-3 p0">
+<div class="row m0 p0 justify-content-between justify-content-around">
+<div class="col-3 p0">sort by:</div>
+<div class="col-3 p0"><a href="{% url 'sort_sold' %}">Sold</a></div>
+<div class="col-3 p0"><a href="{% url 'sort_new' %}">newest</a></div>
+<div class="col-3 p0"><a href="{% url 'sort_price' %}">price</a></div>
+</div></div>
+<div class="col-3 p0"></div>
+<div class="col-3 p0"></div>
+<div class="col-3 p0"></div>
 </div>
 
 <div class="row m0 p0 justify-content-center">
@@ -34,6 +38,7 @@ sort by:
   {% endfor %}
 </div>
 
+{% if not check_for_pageing %}
 <div class="row m0 p0 justify-content-between justify-content-around">
 <div class="pagination">
     {% if items.has_previous %}
@@ -44,9 +49,15 @@ sort by:
             <i class="fa fa-angle-left" aria-hidden="true"></i>
         </a>
     {% endif %}
-    <span class="pagination-current">{{ items.number }}</span>
-    <span class="pagination-of">of</span>
-    <span class="pagination-total">{{ items.paginator.num_pages }}</span>
+
+    {% for num in items.paginator.page_range %}
+    {% if items.number == num %}
+    <span class="pagination-current">{{num}}</span>
+    {% elif num > items.number|add:'-3' and num < items.number|add:'3' %}
+    <span class="pagination-total">{{num}}</span>
+    {% endif %}
+    {% endfor %}
+
     {% if items.has_next %}
         <a class="pagination-action" href="?page={{ items.next_page_number }}">
             <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
@@ -56,4 +67,5 @@ sort by:
     {% endif %}
 </div>
 </div>
+{% endif %}
 {% endblock %}
