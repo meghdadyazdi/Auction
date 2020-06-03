@@ -115,8 +115,8 @@
       
     {% else%}
       <p>Now you can pay</p>
-      <div class="row">
-      <a href="{% url 'payment' item.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+      <div class="row m0 p0">
+      <a href="{% url 'payment' item.id %}" class="btn btn-success text-center" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
     </div>
 
       <p>
@@ -176,14 +176,14 @@
 
 
 
-  <div class="col-12 col-md-8">
+  <div class="col-12 col-md-6">
     {% if user.username %}
     <p>You are logged in as {{ user.username }}</p>
     {% else %}
     <p>To start bidding you should log in or register</p>
     {% endif %} {% if item.image %}
     <div class="img-detail-container">
-      <img class="img-detail" src="/media/{{ item.image }}" />
+      <img class="rounded img-fluid img-thumbnail" src="/media/{{ item.image }}" />
     </div>
     {% endif %}
     <h3>{{ item.title }} ({{item.seller}})</h3>

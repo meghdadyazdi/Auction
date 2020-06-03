@@ -131,12 +131,22 @@ input:focus {
 }
 
 .img-container{
-    background-color: #ccc;
+    background-color: #e9ecef;
     border-radius: 2px;
-    overflow: hidden;
     height: 165px;
     width: 200px;
     position: relative;
+    text-align: center;
+    display: inline-block; 
+}
+
+.img-thumbnail {
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .sold{
@@ -162,49 +172,6 @@ input:focus {
     font-size: 30px;
 }
 
-/* pagination__________________________________________________ */
-
-.pagination {
-    text-align: center;
-    margin-top: 1em;
-}
-
-.pagination a {
-    text-decoration: none;
-}
-
-.pagination-current,
-.pagination-total {
-    padding: 0.5em 0.8em;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #343a40;
-    margin-top: 10px;
-    margin-right: 5px;
-}
-
-.pagination-total {
-    background-color: #B9B9B9;
-}
-
-.pagination-action {
-    margin: 0 0.1em;
-    display: inline-block;
-    padding: 0.5em 0.5em;
-    color: #B9B9B9;
-    font-size: 1.3em;
-}
-
-.pagination-of {
-    color: #B9B9B9;
-    padding: 0 1em;
-    margin-top: 18px;
-}
-
-.pagination-action:hover {
-    color: #343a40;
-}
-
 /* img-detail__________________________________________________ */
 
 .img-detail{
@@ -216,11 +183,12 @@ input:focus {
 }
 
 .img-detail-container{
-    background-color: #ccc;
-    border-radius: 1px;
-    /* overflow: hidden; */
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 100%;
+    border-radius: 2px;
+    position: relative;
+    text-align: center;
+    display: inline-block; 
 }
 
 /* .card-recipe:hover{
@@ -272,6 +240,49 @@ input:focus {
     color: rgb(255,223,0)
 }
 
+
+/* pagination__________________________________________________ */
+
+.pagination {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.pagination-current,
+.pagination-total {
+    padding: 0.5em 0.8em;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #343a40;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.pagination-total {
+    background-color: #B9B9B9;
+}
+
+.pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    color: #B9B9B9;
+    font-size: 1.3em;
+}
+
+.pagination-of {
+    color: #B9B9B9;
+    padding: 0 1em;
+    margin-top: 18px;
+}
+
+.pagination-action:hover {
+    color: #343a40;
+}
 
 
 
