@@ -6,14 +6,44 @@
 <!-- <div class="col-12 col-xs-10 col-md-8">sort by:</div> -->
 <div class="col-3 p0">
 <div class="row m0 p0 justify-content-between justify-content-around">
-<div class="col-3 p0">sort by:</div>
-<div class="col-3 p0"><a href="{% url 'sort_sold' %}">Sold</a></div>
-<div class="col-3 p0"><a href="{% url 'sort_new' %}">newest</a></div>
-<div class="col-3 p0"><a href="{% url 'sort_price' %}">price</a></div>
+
+
 </div></div>
 <div class="col-3 p0"></div>
 <div class="col-3 p0"></div>
 <div class="col-3 p0"></div>
+</div>
+
+<div class="sort-wrap">
+<div class="sort">
+{% if mode == 'all'%}
+<a class="mode-sort" href="/"><strong>All</strong></a>
+<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+{% elif mode == 'new'%}
+<a href="/"><strong>All</strong></a>
+<a class="mode-sort" href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+{% elif mode == 'price'%}
+<a href="/"><strong>All</strong></a>
+<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+<a class="mode-sort" href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+{% elif mode == 'sold'%}
+<a href="/"><strong>All</strong></a>
+<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+<a class="mode-sort" href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+{% else %}
+<a href="/"><strong>All</strong></a>
+<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+{% endif %}
+
+</div>
 </div>
 
 <div class="row m0 p0 justify-content-center">
@@ -48,6 +78,13 @@
         <a class="pagination-action" href="?page={{ items.previous_page_number }}">
             <i class="fa fa-angle-left" aria-hidden="true"></i>
         </a>
+    {% else %}
+    <a class="pagination-no-action" href="">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        </a>
+        <a class="pagination-no-action" href="">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
     {% endif %}
 
     {% for num in items.paginator.page_range %}
@@ -62,6 +99,12 @@
         <a class="pagination-action" href="?page={{ items.next_page_number }}">
             <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
         <a class="pagination-action" href="?page={{ items.paginator.num_pages }}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    {% else %}
+    <a class="pagination-no-action" href="">
+            <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <a class="pagination-no-action" href="">
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
         </a>
     {% endif %}

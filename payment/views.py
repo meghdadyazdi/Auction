@@ -22,16 +22,9 @@ def payment(request, pk):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
-            # buyer_address = {
-            #                  'name': order.full_name,
-            #                  'street': order.street_address1,
-            #                  'postcode': order.postcode,
-            #                  'town': order.town_or_city,
-            #                  'country': order.country
-            #                 }
             item = get_object_or_404(Item, pk=pk)
             total = item.highest_bid_offer
+            customer = []
             try:
                 customer = stripe.Charge.create(
                     amount=int(total*100),

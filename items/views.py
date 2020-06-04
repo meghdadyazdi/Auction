@@ -14,10 +14,10 @@ def get_items(request):
     """
     items = Item.objects.filter(published_date__lte=timezone.now()
                                 ).order_by('-published_date')
-    paginator = Paginator(items, 4)
+    paginator = Paginator(items, 5)
     page = request.GET.get('page', 1)
     items = paginator.page(page)
-    return render(request, "index.html", {'items': items})
+    return render(request, "index.html", {'items': items, "mode": 'all'})
 
 
 def item_detail(request, pk):
