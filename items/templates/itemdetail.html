@@ -183,7 +183,7 @@
     <p>To start bidding you should log in or register</p>
     {% endif %} {% if item.image %}
     <div class="img-detail-container">
-      <img class="rounded img-fluid img-thumbnail" src="url('{{ MEDIA_URL }}{{ product.image }}')" />
+      <img class="rounded img-fluid img-thumbnail" src="{{ MEDIA_URL }}{{ product.image }}" />
     </div>
     {% endif %}
     <h3>{{ item.title }} ({{item.seller}})</h3>
