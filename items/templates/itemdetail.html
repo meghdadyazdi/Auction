@@ -8,11 +8,12 @@
 {% block content %}
 <div class="row m0 p0">
   <div class="col-12 col-md-4 text-center">
-    <input type="hidden" id="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
+    <input type="hidden" class="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
     <input type="hidden" id="auction_time_start" name="auction_time_start" value="{{ item.auction_time_start }}"/>
-    <input type="hidden" id="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
+    <input type="hidden" class="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
     <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
     <input type="hidden" id="user-name" name="user-name" value="{{user.username}}"/>
+    
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -20,12 +21,13 @@
       <div class="timer" id="minutes"></div>
       <div class="timer" id="seconds"></div>
     </div>
-
+<div class="announce-box">
+    
     {% if item.seller == user.username %}
     <div class="" id="auction_duration">
       <div class="" id="auction_time-select">
-        <p>
-          <span class="">Choose how long you want to auction your item: </span>
+        <p class="announce">
+          Choose how long you want to auction your item:
         </p>
         <input class="" type="number" id="time-quantity" name="time-quantity" min="1" max="60" value="1"/>
         <select class="" id="time-scale" name="time-scale">
@@ -39,12 +41,14 @@
         </span>
       </div>
       <div class="d-none" id="announce-time">
-        <p>
-          Your item will be auctioned for
+        <p class="announce">
+          Your item will be auctioned for<strong>
           <span id="auction-time-quantity"></span>
           <span> </span>
           <span id="auction-time-scale"></span>
+        </strong>
         </p>
+
       </div>
 
       <form method="post" action="{% url 'start_auction' item.id %}" class="accountform">
@@ -57,17 +61,20 @@
     </div>
     {% endif %}
     
-    <p class="">Initial price : <span>{{item.price}} €</span></p>
+    <p class="announce">Initial price : <span>{{item.price}} €</span></p>
     
-    
+    {{item.auction_status}}
     {% if item.highest_bid_offer == item.price and item.auction_status and not item.sold %}
     <div class="d-none" id="end-auction-no-bid">
-      <p>Auction is finished. No one bidded this item.</p>
+      <p class="announce announce-caution">Auction is finished. No one bidded this item. You can 
+      <a href="{% url 'restart_auction' item.id %}" id="restart-auction" class="btn btn-success text-center p0" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>restart</a>
+      <!-- <button class="btn btn-success text-center" type="" id="restart-auction"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true">restart</span></button> -->
+      the auction again.</p>
     </div>
 
     <div class="" id="status-no-bid">
-      <p>
-        No bid yet!
+      <p class="announce">
+        No bid yet on this item!
       </p>
     </div>
     {% else %}
@@ -75,7 +82,7 @@
     <div class="d-none" id="end-auction-winner">
     {% if item.highest_bid_user == user.username %}
       {% if not item.sold%}
-      <p>Congragulations!! You won this item</p>
+      <p class="announce">Congragulations!! You won this item</p>
       {% endif%}
     {% else %}
       <p>Auction is finished.</p>
@@ -85,11 +92,11 @@
 
     <div class="" id="status-highest">
     {% if item.highest_bid_user == user.username %}
-      <p>The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
+      <p class="announce">The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
         <strong>You</strong>
       </p>
     {% elif item.auction_status %}
-      <p>
+      <p class="announce">
         The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
         <strong>{{item.highest_bid_user}}</strong>
       </p>
@@ -114,12 +121,12 @@
       <div class="">{{item.buyer_country}}</div>
       
     {% else%}
-      <p>Now you can pay</p>
-      <div class="row m0 p0">
-      <a href="{% url 'payment' item.id %}" class="btn btn-success text-center" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+      <p class="announce">Now you can pay</p>
+      <div class="row m0 p0 text-center">
+      <a href="{% url 'payment' item.id %}" class="col btn btn-success text-center" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
     </div>
 
-      <p>
+      <p class="announce announce-caution">
         If you don't pay in 24 hours you cannnot pay it anymore and you will be
         blocked from bidding this item
       </p>{% endif%}
@@ -133,7 +140,7 @@
     
     
     {% if user.username and item.seller != user.username and item.auction_status %}
-    <div class="" id="bidding">
+    <div class="announce" id="bidding">
       <div>Place a higher bid and win this item</div>
       {% if item.price <= 500 %}
       <button class="btn btn-danger" type="" id="1a">+1€</button>
@@ -174,6 +181,8 @@
   </form>
   </div>
 
+  </div>
+
 
 
   <div class="col-12 col-md-6">
@@ -183,7 +192,7 @@
     <p>To start bidding you should log in or register</p>
     {% endif %} {% if item.image %}
     <div class="img-detail-container">
-      <img class="rounded img-fluid img-thumbnail" src="/media/{{ item.image }}" />
+      <img class="rounded img-fluid img-thumbnail" src="{{MEDIA_URL}}{{ item.image }}" />
     </div>
     {% endif %}
     <h3>{{ item.title }} ({{item.seller}})</h3>

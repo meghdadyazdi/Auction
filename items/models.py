@@ -17,7 +17,7 @@ class Item(models.Model):
     views = models.IntegerField(default=0)
     tag = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(upload_to="img", blank=True, null=True)
-    price = models.IntegerField(default=0, null=True)
+    price = models.PositiveIntegerField(default=1, null=True)
     highest_bid_user = models.CharField(default="", max_length=200)
     highest_bid_offer = models.IntegerField(default=0)
     auction_status = models.IntegerField(default=0)

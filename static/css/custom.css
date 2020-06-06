@@ -102,12 +102,33 @@ input:focus {
     line-height: 20px;
 }
 
+.announce-box{
+    border: 2px solid #343a401d;
+    border-radius: 7px;
+    padding: 15px;
+    background-color: aliceblue;
+}
+
+.announce {
+    margin-top: 1rem;
+    /* color: #28a745; */
+    border-radius: 5px;
+    background-color: #28a74522;
+    padding: 1px;
+}
+
+.announce-caution {
+    background-color: #dc354522 !important;
+}
+
+
+/* img-cart__________________________________________________ */
 .card-item{
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
   /* transition: 0.3s; */
   border-radius: 2px;
   margin: 0 0 40px 20px;
-  height: 250px;
+  /* height: 350px; */
   width: 200px !important;
   background-color: #fff;
   flex: 0 0 0%!important;
@@ -345,12 +366,24 @@ input:focus {
 
 
 .timer {
-  display: inline-block;
-  line-height: 1;
-  padding: 5px;
-  margin-top: 20px;
-  font-size: 50px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: inline-block;
+    line-height: 1;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 50px;
+    border-radius: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.timer-small {
+    display: inline-block;
+    line-height: 1;
+    padding: 5px;
+    /* margin-top: 20px; */
+    font-size: 18px;
+    font-weight: bold;
+    color:  #343a40;
 }
 
 .digits {

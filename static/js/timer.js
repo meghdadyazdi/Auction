@@ -52,6 +52,10 @@ function makeTimer() {
                 $("#hours").html(hours + "<span class='digits'>Hours</span>");
                 $("#minutes").html(minutes + "<span class='digits'>Minutes</span>");
                 $("#seconds").html(seconds + "<span class='digits'>Seconds</span>");
+                $("#days-small").html(days + "<span class='digits'>Days</span>");
+                $("#hours-small").html(hours + "<span class='digits'>Hours</span>");
+                $("#minutes-small").html(minutes + "<span class='digits'>Minutes</span>");
+                $("#seconds-small").html(seconds + "<span class='digits'>Seconds</span>");
             }
 
                 

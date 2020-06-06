@@ -30,6 +30,11 @@ $(document).ready(function () {
     console.log(time_quantity);
   });
 
+  //$("#restart-auction").click(function () {
+    //$("#status-no-bid").removeClass("d-none");
+    //$("#end-auction-no-bid").addClass("d-none");
+  //});
+
   
 
 
@@ -188,26 +193,12 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  if ($("#auction_status").val() == 1) {
+  if ($(".auction_status").val() == 1) {
     $("#auction_duration").addClass("d-none");
     $("#before_auction").addClass("d-none");
-    var endFix = $("#end-time-fix").val();
-    //console.log(endFix);
+    var endFix = $(".end-time-fix").val();
+    console.log(endFix);
+    console.log($("#auction_status").val());
 
     var days;
     var hours;
@@ -243,16 +234,23 @@ $(document).ready(function () {
       
 
       if (hours >= 0 && minutes >= 0 && seconds >= 0 && days >= 0) {
-        //console.log(days);
+        // console.log(days);
         $("#days").html(days + "<span class='digits'>Days</span>");
         $("#hours").html(hours + "<span class='digits'>Hours</span>");
         $("#minutes").html(minutes + "<span class='digits'>Minutes</span>");
         $("#seconds").html(seconds + "<span class='digits'>Seconds</span>");
+        $(".days-small").html(days + "d");
+        $(".hours-small").html(hours + "h");
+        $(".minutes-small").html(minutes + "m");
+        $(".seconds-small").html(seconds + "s");
+        
       }
       else{
           $("#bidding").addClass('d-none');
           $("#status-highest").addClass('d-none');
           $("#end-auction-winner").removeClass('d-none');
+          $("#end-auction-no-bid").removeClass('d-none');
+          $("#status-no-bid").addClass('d-none');
           $("#winner").removeClass('d-none');
       }
     };
@@ -271,5 +269,7 @@ $(document).ready(function () {
         $("#status-highest").addClass('d-none');
         $("#end-auction-winner").removeClass('d-none');
         $("#winner").removeClass('d-none');
+        $("#end-auction-no-bid").removeClass('d-none');
+        $("#status-no-bid").addClass('d-none');
     }
 });

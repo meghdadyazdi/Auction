@@ -1,7 +1,13 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% load static from staticfiles %}
 
+{% block head_js %}
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock %}
 
+{% block content %}
 
+    
 <div class="row m0 p0 justify-content-center">
 <!-- <div class="col-12 col-xs-10 col-md-8">sort by:</div> -->
 <div class="col-3 p0">
@@ -17,27 +23,27 @@
 <div class="sort-wrap">
 <div class="sort">
 {% if mode == 'all'%}
-<a class="mode-sort" href="/"><strong>All</strong></a>
+<a class="mode-sort" href="{% url 'get_items' %}"><strong>All</strong></a>
 <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
 <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
 <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
 {% elif mode == 'new'%}
-<a href="/"><strong>All</strong></a>
+<a href="{% url 'get_items' %}"><strong>All</strong></a>
 <a class="mode-sort" href="{% url 'sort_new' %}"><strong>Newest</strong></a>
 <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
 <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
 {% elif mode == 'price'%}
-<a href="/"><strong>All</strong></a>
+<a href="{% url 'get_items' %}"><strong>All</strong></a>
 <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
 <a class="mode-sort" href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
 <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
 {% elif mode == 'sold'%}
-<a href="/"><strong>All</strong></a>
+<a href="{% url 'get_items' %}"><strong>All</strong></a>
 <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
 <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
 <a class="mode-sort" href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
 {% else %}
-<a href="/"><strong>All</strong></a>
+<a href="{% url 'get_items' %}"><strong>All</strong></a>
 <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
 <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
 <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
@@ -47,10 +53,19 @@
 </div>
 
 <div class="row m0 p0 justify-content-center">
+  {% if not items %}
+  <div class="col-12 col-xs-6 col-md-4 text-center p0">
+    <strong>Unfortunately, we found no search results for "{{search}}"</strong>
+  </div>
+  {% endif %}
+</div>
+
+
+<div class="row m0 p0 justify-content-center">
   {% for item in items %}
   <div class="col-12 col-xs-6 col-md-4 card-item p0">
     <div class="img-container">
-      <img class="rounded img-fluid img-thumbnail" src="/media/{{ item.image }}" />
+      <img class="rounded img-fluid img-thumbnail" src="{{MEDIA_URL}}{{ item.image }}" />
       <div class="sold-img-item"></div>
       {% if item.sold == 1 %}
       <div class="sold">Sold
@@ -63,6 +78,17 @@
     <div class="no-flow">
       <strong>Initial Price :</strong> <span>{{item.price}} €</span>
     </div>
+
+    <input type="hidden" class="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
+    <input type="hidden" class="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
+
+    <div class="timer-small" id="timer-small">
+      <div class="timer-small days-small" id="days-small"></div>
+      <div class="timer-small hours-small" id="hours-small"></div>
+      <div class="timer-small minutes-small" id="minutes-small"></div>
+      <div class="timer-small seconds-small" id="seconds-small"></div>
+    </div>
+
     <a class="divLinkkk" href="{% url 'item_detail' item.id %}"></a>
   </div>
   {% endfor %}
