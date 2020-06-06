@@ -65,7 +65,11 @@
   {% for item in items %}
   <div class="col-12 col-xs-6 col-md-4 card-item p0">
     <div class="img-container">
+<<<<<<< HEAD
       <img class="rounded img-fluid img-thumbnail" src="{{MEDIA_URL}}{{ item.image }}" />
+=======
+      <img class="rounded img-fluid img-thumbnail" src="{{ MEDIA_URL }}{{ item.image }}" />
+>>>>>>> 57ede7ec1d43c4e29f359c07a1db815235f38d15
       <div class="sold-img-item"></div>
       {% if item.sold == 1 %}
       <div class="sold">Sold
