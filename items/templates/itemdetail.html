@@ -202,7 +202,7 @@
 
 
 
-  <div class="auction-box col-12 col-md-6">
+  <div class="auction-box col-12 col-md-8">
     {% if user.username %}
     <p>You are logged in as {{ user.username }}</p>
     {% else %}
@@ -232,17 +232,36 @@
 
 
 
-  <div class="col-9">
-
-  Comments:
-  
-      <form method="POST" action="{% url 'start_auction' item.id %}" class="accountform" enctype="multipart/form-data">
+  <div class="col-12 announce-box">
+   <p class="">Seller's Comments:</p>
+   
+   
+  <div class="col">
+  <p class="seller-comment"><strong>{{item.seller}}: </strong>{{item.comment_seller}}</p>
+  </div>
+ 
+  {% if user.username == item.seller%}
+  <form method="POST" action="{% url 'start_auction' item.id %}" class="accountform" enctype="multipart/form-data">
         {% csrf_token %}
-        <textarea id="comments_erea" name="comments_erea" cols="40" rows="4" class=" form-control" required=""></textarea>
+        <textarea id="comments_seller" name="comments_seller" cols="40" rows="4" class=" form-control" required=""></textarea>
         <button type="submit" class="btn btn-primary">Comment</button>
     </form>
+ {% endif %}
 
-{{item.comment_seller}}
+ <p class="">Buyer's Comments:</p>
+   
+ <div class="col">
+  <p class="seller-comment"><strong>Buyer ({{item.highest_bid_user}}): </strong>{{item.comment_winner}}</p>
+  </div>
+
+  {% if item.sold == 1 and user.username == item.highest_bid_user%}  
+      <form method="POST" action="{% url 'start_auction' item.id %}" class="accountform" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea id="comments_buyer" name="comments_buyer" cols="40" rows="4" class=" form-control" required=""></textarea>
+        <button type="submit" class="btn btn-primary">Comment</button>
+    </form>
+{% endif %}
+
   </div>
 
 

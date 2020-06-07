@@ -41,7 +41,7 @@ p{
 }
 
 .mycontainer{
-    margin: 4rem 0 0 4rem;
+    margin: 4rem 4rem 0 4rem;
 }
 
 #search-box{
@@ -144,6 +144,12 @@ input:focus {
     font-size: 20px;
 }
 
+.seller-comment{
+    margin-top: 1rem;
+    /* color: #28a745; */
+    border-radius: 5px;
+    background-color: #28a74522;
+}
 
 /* img-cart__________________________________________________ */
 .card-item{
