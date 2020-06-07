@@ -29,8 +29,8 @@ class Item(models.Model):
     buyer_town = models.CharField(max_length=30, default=0, blank=False, null=False)
     buyer_postcode = models.CharField(max_length=30, default=0, blank=False, null=False)
     buyer_country = models.CharField(max_length=30, default=0, blank=False, null=False)
-    comment_seller = models.TextField(default="No comment yet")
-    comment_winner = models.TextField(default="No comment yet")
+    comment_seller = models.TextField()
+    comment_winner = models.TextField()
     timer = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
     def __unicode__(self):

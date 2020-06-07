@@ -22,17 +22,23 @@ def start_auction(request, pk):
         item.highest_bid_user = request.POST.get('higher-bid-user')
         print(item.auction_end_time)
         print(item.auction_duration_time)
+    elif (request.POST.get('comments_erea')):
+        if request.user.username == item.seller:
+            item.comment_seller = request.POST.get('comments_erea')
+        else:
+            item.comment_winner = request.POST.get('comments_erea')
     item.save()
     return render(request, "itemdetail.html", {'item': item})
 
 
-def restart_auction(request, pk):
-    """
-    restart the auction
-    """
-    item = get_object_or_404(Item, pk=pk)
-    item.auction_status = 0
-    print(item.auction_status)
-    item.save()
-    print(item.auction_status)
-    return render(request, "itemdetail.html", {'item': item})
+# def restart_auction(request, pk):
+#     """
+#     restart the auction
+#     """
+#     print('retarttttttttttttttttttttttttttttttttttttttttttttt')
+#     item = get_object_or_404(Item, pk=pk)
+#     item.auction_status = 0
+#     print(item.auction_status)
+#     item.save()
+#     print(item.auction_status)
+#     return render(request, "itemdetail.html", {'item': item, "mode": 'price'})

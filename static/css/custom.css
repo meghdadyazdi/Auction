@@ -6,6 +6,10 @@ body {
     font-family: Arial;
 }
 
+p{
+    margin: 10px 0 10px 0 !important;
+}
+
 .navbar {
     background-image: -webkit-linear-gradient(#1d2124, #1d2124 60%, #1d2124);
     background-image: -o-linear-gradient(#1d2124, #1d2124 60%, #1d2124);
@@ -37,7 +41,7 @@ body {
 }
 
 .mycontainer{
-    margin-top: 4rem;
+    margin: 4rem 0 0 4rem;
 }
 
 #search-box{
@@ -102,11 +106,21 @@ input:focus {
     line-height: 20px;
 }
 
-.announce-box{
+#before_auction{
+    padding: 5px;
+
+}
+
+.auction-box{
     border: 2px solid #343a401d;
-    border-radius: 7px;
+    border-radius: 10px;
+}
+
+.announce-box {
     padding: 15px;
     background-color: aliceblue;
+    margin: 2px;
+    border-radius: 10px;
 }
 
 .announce {
@@ -114,11 +128,20 @@ input:focus {
     /* color: #28a745; */
     border-radius: 5px;
     background-color: #28a74522;
-    padding: 1px;
 }
 
 .announce-caution {
     background-color: #dc354522 !important;
+}
+
+.announce-winner {
+    margin-top: 2rem;
+    /* color: #28a745; */
+    border-radius: 5px;
+    background-color: #28a7454d;
+    padding: 40px;
+    /* margin: 2px; */
+    font-size: 20px;
 }
 
 
@@ -370,7 +393,7 @@ input:focus {
     line-height: 1;
     padding: 5px;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-size: 50px;
     border-radius: 5px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

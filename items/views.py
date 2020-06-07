@@ -33,6 +33,19 @@ def item_detail(request, pk):
     return render(request, "itemdetail.html", {'item': item})
 
 
+def restart_auction(request, pk):
+    """
+    Returns a single item based on the item ID (pk) and
+    render it to the 'itemdetail.html' template.
+    Or return a 404 error if the item is
+    not found
+    """
+    item = get_object_or_404(Item, pk=pk)
+    item.auction_status = 0
+    item.save()
+    return render(request, "itemdetail.html", {'item': item})
+
+
 @login_required
 def add_or_edit_item(request, pk=None):
     """

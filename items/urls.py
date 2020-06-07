@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import get_items, item_detail, add_or_edit_item
+from .views import get_items, item_detail, add_or_edit_item, restart_auction
 from search_and_sort.views import sort_new, sort_price, sort_sold
 
 urlpatterns = [
@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^sold$', sort_sold, name='sort_sold'),
     url(r'^all$', get_items, name='get_items'),
     url(r'^(?P<pk>\d+)/$', item_detail, name='item_detail'),
+    url(r'^(?P<pk>\d+)/restart_auction$', restart_auction, name='restart_auction'),
     url(r'^new/$', add_or_edit_item, name='new_item'),
     url(r'^(?P<pk>\d+)/edit/$', add_or_edit_item, name='edit_item')
 ]

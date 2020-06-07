@@ -14,6 +14,18 @@
     <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
     <input type="hidden" id="user-name" name="user-name" value="{{user.username}}"/>
     
+<div class="auction-box">
+
+{% if item.seller != user.username %}
+    <div class="announce-box" id="before_auction">
+      <p>The seller has not started the auction yet.</p>
+    </div>
+    {% endif %}
+
+
+    <div class="d-none announce-box" id="auction_closed">
+      <strong><p>AUCTION IS CLOSED</p></strong>
+    </div>
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -61,9 +73,11 @@
     </div>
     {% endif %}
     
-    <p class="announce">Initial price : <span>{{item.price}} €</span></p>
     
-    {{item.auction_status}}
+    {% if not item.sold %}
+    <p class="announce">Initial price : <span>{{item.price}} €</span></p>
+    {% endif %}
+   
     {% if item.highest_bid_offer == item.price and item.auction_status and not item.sold %}
     <div class="d-none" id="end-auction-no-bid">
       <p class="announce announce-caution">Auction is finished. No one bidded this item. You can 
@@ -85,8 +99,8 @@
       <p class="announce">Congragulations!! You won this item</p>
       {% endif%}
     {% else %}
-      <p>Auction is finished.</p>
-      <p>Winner is: <span class="winner"><strong> {{item.highest_bid_user}}</strong><sup><i class="fas fa-trophy"></i></sup></span> by <strong>{{item.highest_bid_offer}} €</strong></p>
+      <p class="announce announce-caution">Auction is finished.</p>
+      <p class="announce-winner">Winner is: <span class="winner"><strong> {{item.highest_bid_user}}</strong><sup><i class="fas fa-trophy"></i></sup></span> by <strong>{{item.highest_bid_offer}} €</strong></p>
     {% endif %}
     </div>
 
@@ -105,21 +119,20 @@
     {% endif %}
 
 
-    {% if item.seller != user.username %}
-    <div class="" id="before_auction">
-      <p>The seller has not started the auction yet</p>
-    </div>
-    {% endif %}
+    
     
     {% if item.highest_bid_user == user.username %}
     <div class="d-none" id="winner">
     {% if item.sold == 1 %}
+      
+      <div class="announce text-justify">
       <div>Thanks for your payment <strong>{{item.buyer_name}}</strong></div>
       <div class="">The item will ship to your address to:</div>
-      <div class="">{{item.buyer_address}}</div>
+      <strong><div class="">{{item.buyer_address}}</div>
       <div class="">{{item.buyer_postdoc}} {{item.buyer_town}}</div>
-      <div class="">{{item.buyer_country}}</div>
-      
+      <div class="">{{item.buyer_country}}</div></strong>
+      </div>
+
     {% else%}
       <p class="announce">Now you can pay</p>
       <div class="row m0 p0 text-center">
@@ -138,9 +151,9 @@
     
     
     
-    
+    <div class="announce">
     {% if user.username and item.seller != user.username and item.auction_status %}
-    <div class="announce" id="bidding">
+    <div class="" id="bidding">
       <div>Place a higher bid and win this item</div>
       {% if item.price <= 500 %}
       <button class="btn btn-danger" type="" id="1a">+1€</button>
@@ -179,13 +192,17 @@
         <input type="hidden" id="higher-bid-user" name="higher-bid-user" value=""/>
         <button class="d-none btn btn-success" id="higher-bid-confirm" type="submit">Confirm</button>
   </form>
+</div>
+
+  </div>
+
   </div>
 
   </div>
 
 
 
-  <div class="col-12 col-md-6">
+  <div class="auction-box col-12 col-md-6">
     {% if user.username %}
     <p>You are logged in as {{ user.username }}</p>
     {% else %}
@@ -210,8 +227,26 @@
     {% if user.username and user.username == item.seller  and not item.auction_status %}
     <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>
     {% endif %}
-    <hr />
+    
   </div>
+
+
+
+  <div class="col-9">
+
+  Comments:
+  
+      <form method="POST" action="{% url 'start_auction' item.id %}" class="accountform" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea id="comments_erea" name="comments_erea" cols="40" rows="4" class=" form-control" required=""></textarea>
+        <button type="submit" class="btn btn-primary">Comment</button>
+    </form>
+
+{{item.comment_seller}}
+  </div>
+
+
 </div>
+
 
 {% endblock %}
