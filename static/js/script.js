@@ -253,6 +253,7 @@ $(document).ready(function () {
           $("#status-no-bid").addClass('d-none');
           $("#winner").removeClass('d-none');
           $("#auction_closed").removeClass('d-none');
+          $("#higher-bid-user").val(1);
       }
     };
     var now = new Date();
@@ -273,5 +274,6 @@ $(document).ready(function () {
         $("#end-auction-no-bid").removeClass('d-none');
         $("#status-no-bid").addClass('d-none');
         $("#auction_closed").removeClass('d-none');
+        $("#end-of-timer").val(1);
     }
 });

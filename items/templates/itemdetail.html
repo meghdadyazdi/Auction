@@ -18,10 +18,9 @@
 
 {% if item.seller != user.username %}
     <div class="announce-box" id="before_auction">
-      <p>The seller has not started the auction yet.</p>
+      <p class="announce">The seller has not started the auction yet.</p>
     </div>
     {% endif %}
-
 
     <div class="d-none announce-box" id="auction_closed">
       <strong><p>AUCTION IS CLOSED</p></strong>
@@ -35,7 +34,7 @@
     </div>
 <div class="announce-box">
     
-    {% if item.seller == user.username %}
+    {% if item.seller == user.username and not item.sold and not item.auction_status%}
     <div class="" id="auction_duration">
       <div class="" id="auction_time-select">
         <p class="announce">
@@ -78,7 +77,7 @@
     <p class="announce">Initial price : <span>{{item.price}} €</span></p>
     {% endif %}
    
-    {% if item.highest_bid_offer == item.price and item.auction_status and not item.sold %}
+    {% if item.seller == user.username and item.highest_bid_offer == item.price and item.auction_status and not item.sold %}
     <div class="d-none" id="end-auction-no-bid">
       <p class="announce announce-caution">Auction is finished. No one bidded this item. You can 
       <a href="{% url 'restart_auction' item.id %}" id="restart-auction" class="btn btn-success text-center p0" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>restart</a>
@@ -94,7 +93,7 @@
     {% else %}
 
     <div class="d-none" id="end-auction-winner">
-    {% if item.highest_bid_user == user.username %}
+    {% if user.username and item.highest_bid_user == user.username %}
       {% if not item.sold%}
       <p class="announce">Congragulations!! You won this item</p>
       {% endif%}
@@ -105,11 +104,11 @@
     </div>
 
     <div class="" id="status-highest">
-    {% if item.highest_bid_user == user.username %}
+    {% if user.username and item.highest_bid_user == user.username and not item.sold%}
       <p class="announce">The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
         <strong>You</strong>
       </p>
-    {% elif item.auction_status %}
+    {% elif item.auction_status and item.highest_bid_user %}
       <p class="announce">
         The highest bid so far is <strong>{{item.highest_bid_offer}} €</strong> by
         <strong>{{item.highest_bid_user}}</strong>
@@ -121,7 +120,7 @@
 
     
     
-    {% if item.highest_bid_user == user.username %}
+    {% if user.username and item.highest_bid_user == user.username %}
     <div class="d-none" id="winner">
     {% if item.sold == 1 %}
       
@@ -152,7 +151,7 @@
     
     
     <div class="announce">
-    {% if user.username and item.seller != user.username and item.auction_status %}
+    {% if user.username and item.seller != user.username and item.auction_status and not item.sold%}
     <div class="" id="bidding">
       <div>Place a higher bid and win this item</div>
       {% if item.price <= 500 %}
@@ -181,7 +180,7 @@
     <div><p>To place a bid you should first <a class="" href="{% url 'login' %}">Log In</a> or <a class="" href="{% url 'register' %}">Register</a></p></div>
     {% endif %}
   
-
+{% if user.username and not item.sold and item.auction_status%}
   <div class="d-none" id="confirm-bid">Confirm your new bid </div>
 
 
@@ -190,8 +189,11 @@
         <input type="hidden" id="form-2" name="form-2" value="1"/>
         <input type="hidden" id="higher-bid" name="higher-bid" value=""/>
         <input type="hidden" id="higher-bid-user" name="higher-bid-user" value=""/>
+        <input type="hidden" id="end-of-timer" name="end-of-timer" value=""/>
         <button class="d-none btn btn-success" id="higher-bid-confirm" type="submit">Confirm</button>
   </form>
+  {% endif %}
+
 </div>
 
   </div>
