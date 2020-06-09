@@ -22,9 +22,16 @@
     </div>
     {% endif %}
 
-    <div class="d-none announce-box" id="auction_closed">
-      <strong><p>AUCTION IS CLOSED</p></strong>
+    <div class="d-none dead-timer" id="auction_closed">
+      <div class="timer" id="">
+      <div class="timer">0<span class="digits">Days</span></div>
+      <div class="timer">00<span class="digits">Hours</span></div>
+      <div class="timer">00<span class="digits">Minutes</span></div>
+      <div class="timer digits-seconds">00<span class="digits">Seconds</span></div>
     </div>
+    </div>
+
+    <div class="live-timer d-none" id="auction_running">
 
     <div class="timer" id="timer">
       <div class="timer" id="days"></div>
@@ -32,6 +39,10 @@
       <div class="timer" id="minutes"></div>
       <div class="timer" id="seconds"></div>
     </div>
+    </div>
+
+    
+
 <div class="announce-box">
     
     {% if item.seller == user.username and not item.sold and not item.auction_status%}
@@ -74,6 +85,7 @@
     
     
     {% if not item.sold %}
+    endtime :{{item.endtime}}
     <p class="announce">Initial price : <span>{{item.price}} €</span></p>
     {% endif %}
    
@@ -135,7 +147,17 @@
     {% else%}
       <p class="announce">Now you can pay</p>
       <div class="row m0 p0 text-center">
-      <a href="{% url 'payment' item.id %}" class="col btn btn-success text-center" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+
+
+
+      <form method="post" action="{% url 'payment' item.id %}" class="accountform p0">
+        {% csrf_token %}
+        <input type="hidden" id="end-of-timer-checkout" name="end-of-timer-checkout" value="0"/>
+        <input type="hidden" id="no-form" name="no-form" value="1"/>
+        <button class="col btn btn-success" id="checkout" type="submit">Checkout</button>
+      </form>
+
+      <!-- <a href="{% url 'payment' item.id %}" class="col btn btn-success text-center" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a> -->
     </div>
 
       <p class="announce announce-caution">
@@ -154,17 +176,17 @@
     {% if user.username and item.seller != user.username and item.auction_status and not item.sold%}
     <div class="" id="bidding">
       <div>Place a higher bid and win this item</div>
-      {% if item.price <= 500 %}
+      {% if item.price < 500 %}
       <button class="btn btn-danger" type="" id="1a">+1€</button>
       <button class="btn btn-danger" type="" id="5a">+5€</button>
       <button class="btn btn-danger" type="" id="10a">+10€</button>
       <button class="btn btn-danger" type="" id="20a">+20€</button>
-      {% elif item.price > 500 and item.price <= 1000 %}
+      {% elif item.price >= 500 and item.price < 1000 %}
       <button class="btn btn-danger" type="" id="10b">+10€</button>
       <button class="btn btn-danger" type="" id="20b">+20€</button>
       <button class="btn btn-danger" type="" id="50b">+50€</button>
       <button class="btn btn-danger" type="" id="100b">+100€</button>
-      {% elif item.price > 1000 and item.price <= 5000 %}
+      {% elif item.price >= 1000 and item.price < 5000 %}
       <button class="btn btn-danger" type="" id="50c">+50€</button>
       <button class="btn btn-danger" type="" id="100c">+100€</button>
       <button class="btn btn-danger" type="" id="200c">+200€</button>
@@ -234,12 +256,12 @@
 
 
 
-  <div class="col-12 announce-box">
+  <div class="col-12 announce-box" id="comment">
    <p class="">Seller's Comments:</p>
    
    
   <div class="col">
-  <p class="seller-comment"><strong>{{item.seller}}: </strong>{{item.comment_seller}}</p>
+  <p class="seller-comment"><strong>{{item.seller}}</strong>&nbsp;&nbsp;&nbsp;{{item.comment_seller}}</p>
   </div>
  
   {% if user.username == item.seller%}
@@ -253,7 +275,7 @@
  <p class="">Buyer's Comments:</p>
    
  <div class="col">
-  <p class="seller-comment"><strong>Buyer ({{item.highest_bid_user}}): </strong>{{item.comment_winner}}</p>
+  <p class="seller-comment"><strong>{{item.highest_bid_user}}</strong>&nbsp;&nbsp;&nbsp;{{item.comment_winner}}</p>
   </div>
 
   {% if item.sold == 1 and user.username == item.highest_bid_user%}  

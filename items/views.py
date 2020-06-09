@@ -17,7 +17,7 @@ def get_items(request):
     paginator = Paginator(items, 5)
     page = request.GET.get('page', 1)
     items = paginator.page(page)
-    return render(request, "index.html", {'items': items, "mode": 'all'})
+    return render(request, "index.html", {'items': items, "mode": 'new'})
 
 
 def item_detail(request, pk):
@@ -44,6 +44,7 @@ def restart_auction(request, pk):
     item.auction_status = 0
     item.save()
     return render(request, "itemdetail.html", {'item': item})
+
 
 
 @login_required

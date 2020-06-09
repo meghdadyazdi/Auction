@@ -196,6 +196,7 @@ $(document).ready(function () {
   if ($(".auction_status").val() == 1) {
     $("#auction_duration").addClass("d-none");
     $("#before_auction").addClass("d-none");
+    $("#auction_running").removeClass("d-none");
     var endFix = $(".end-time-fix").val();
     console.log(endFix);
     console.log($("#auction_status").val());
@@ -243,6 +244,7 @@ $(document).ready(function () {
         $(".hours-small").html(hours + "h");
         $(".minutes-small").html(minutes + "m");
         $(".seconds-small").html(seconds + "s");
+        $("#timer-dead").addClass('d-none');
         
       }
       else{
@@ -253,7 +255,9 @@ $(document).ready(function () {
           $("#status-no-bid").addClass('d-none');
           $("#winner").removeClass('d-none');
           $("#auction_closed").removeClass('d-none');
-          $("#higher-bid-user").val(1);
+          $("#end-of-timer").val(1);
+          $("#end-of-timer-checkout").val(1);
+          $("#auction_running").addClass("d-none");
       }
     };
     var now = new Date();
@@ -275,5 +279,7 @@ $(document).ready(function () {
         $("#status-no-bid").addClass('d-none');
         $("#auction_closed").removeClass('d-none');
         $("#end-of-timer").val(1);
+        $("#end-of-timer-checkout").val(1);
+        $("#auction_running").addClass("d-none");
     }
 });

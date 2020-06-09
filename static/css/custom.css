@@ -27,13 +27,16 @@ p{
     border-color: #111;
 }
 
-
 .icon-bar {
     background-color: #fff;
 }
 
 .avatar {
     margin: 8px 0 0 20px;
+}
+
+.alert{
+    margin: 1% 10% 1% 10%;
 }
 
 .accountform {
@@ -113,20 +116,20 @@ input:focus {
 
 .auction-box{
     border: 2px solid #343a401d;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .announce-box {
     padding: 15px;
     background-color: aliceblue;
     margin: 2px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .announce {
     margin-top: 1rem;
     /* color: #28a745; */
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #28a74522;
 }
 
@@ -137,7 +140,7 @@ input:focus {
 .announce-winner {
     margin-top: 2rem;
     /* color: #28a745; */
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #28a7454d;
     padding: 40px;
     /* margin: 2px; */
@@ -146,9 +149,10 @@ input:focus {
 
 .seller-comment{
     margin-top: 1rem;
+    padding: 1rem;
     /* color: #28a745; */
-    border-radius: 5px;
-    background-color: #28a74522;
+    border-radius: 3px;
+    background-color: #dbeeff;
 }
 
 /* img-cart__________________________________________________ */
@@ -405,6 +409,21 @@ input:focus {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.dead-timer {
+    padding: 15px;
+    background-color: #c7c7c7;
+    margin: 2px;
+    border-radius: 5px;
+    color: #fff
+}
+
+.live-timer {
+    padding: 15px;
+    background-color: #fff;
+    margin: 2px;
+    border-radius: 5px;
+}
+
 .timer-small {
     display: inline-block;
     line-height: 1;
@@ -418,8 +437,11 @@ input:focus {
 .digits {
   display: block;
   font-size: 15px;
-  color: #111;
-} 
+}
+
+.digits-seconds {
+  font-size: 25px;
+}
 
 #days {  
   color: #db4844;

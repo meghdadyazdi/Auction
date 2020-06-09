@@ -17,7 +17,7 @@ def start_auction(request, pk):
         item.auction_status = 1
         print(item.auction_end_time)
         print(item.auction_duration_time)
-    elif (request.POST.get('higher-bid-user')):
+    elif request.POST.get('higher-bid-user'):
         if not request.POST.get('end-of-timer'):
             bid = int(request.POST.get('higher-bid'))
             item.highest_bid_offer = item.highest_bid_offer + bid
@@ -25,9 +25,9 @@ def start_auction(request, pk):
             print(item.auction_end_time)
             print(item.auction_duration_time)
         else:
-            messages.error(request,
-                        "Auction is finished. You cannot palce a bid any more!")
+            messages.error(request, "Auction is finished. You cannot palce a bid any more!")
             print(int(request.POST.get('end-of-timer')))
+            item.endtime = 1
     elif (request.POST.get('comments_seller')):
         item.comment_seller = request.POST.get('comments_seller')
     elif (request.POST.get('comments_buyer')):
