@@ -60,7 +60,8 @@ def payment(request, pk):
                 messages.error(request,
                             "We were unable to take a payment with that card!")
     elif not int(request.POST.get('end-of-timer-checkout')) and not item.endtime:
-        messages.error(request, "Auction is NOT finished yet!")
+        messages.warning(request, "Auction is NOT finished yet!")
+        # add_error(None, "Auction is NOT finished yet!")
         return render(request, "itemdetail.html", {'item': item})
     else:
         payment_form = MakePaymentForm()

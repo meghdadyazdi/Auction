@@ -5,6 +5,7 @@ from .forms import ItemForm
 from payment.models import Order
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 
 def get_items(request):
@@ -17,7 +18,7 @@ def get_items(request):
     paginator = Paginator(items, 5)
     page = request.GET.get('page', 1)
     items = paginator.page(page)
-    return render(request, "index.html", {'items': items, "mode": 'new'})
+    return render(request, "index.html", {'items': items, "mode": 'all'})
 
 
 def item_detail(request, pk):
@@ -58,13 +59,20 @@ def add_or_edit_item(request, pk=None):
     """
     # pk if you are editing, No pk if you are adding
     item = get_object_or_404(Item, pk=pk) if pk else None
-    if request.method == "POST":
-        form = ItemForm(request.POST, request.FILES, instance=item)
-        if form.is_valid():
-            item = form.save()
-            item.seller = request.user.username
-            item.save()
-            return redirect(item_detail, item.pk)
+    if item and request.user.username != item.seller:
+        messages.error(request, "You are NOT allowed to edit this item!")
+        return render(request, "itemdetail.html", {'item': item})
+    elif item and item.auction_status:
+        messages.error(request, "You are NOT allowed to edit this item while auction is running!")
+        return render(request, "itemdetail.html", {'item': item})
     else:
-        form = ItemForm(instance=item)
-    return render(request, 'itemform.html', {'form': form})
+        if request.method == "POST":
+            form = ItemForm(request.POST, request.FILES, instance=item)
+            if form.is_valid():
+                item = form.save()
+                item.seller = request.user.username
+                item.save()
+                return redirect(item_detail, item.pk)
+        else:
+            form = ItemForm(instance=item)
+        return render(request, 'itemform.html', {'form': form})

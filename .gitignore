@@ -10,4 +10,5 @@ static/
 media/
 setH.py
 cata.py
+setPostgre.py
 
