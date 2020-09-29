@@ -246,7 +246,7 @@
     <p class=""><span class="boldtext">#</span>{{ item.tag }}</p>
     <p><i><span class="boldtext">Published on:</span> {{ item.published_date }}</i></p>
     <p></p>
-    <a href="{% url 'get_items' %}" class="btn btn-dark">Home</a>
+    <a href="{% url 'sort_new' %}" class="btn btn-dark">Home</a>
     {% if user.username and user.username == item.seller  and not item.auction_status %}
     <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>
     {% endif %}
@@ -256,7 +256,7 @@
 
 
   <div class="col-12 announce-box" id="comment">
-   <p class="">Seller's Comments:</p>
+   <p class=""><b>Seller's Comments:</b></p>
    
    
   <div class="col">
@@ -271,7 +271,7 @@
     </form>
  {% endif %}
 
- <p class="">Buyer's Comments:</p>
+ <p class=""><b>Buyer's Comments:</b></p>
    
  <div class="col">
   <p class="seller-comment"><strong>{{item.highest_bid_user}}</strong>&nbsp;&nbsp;&nbsp;{{item.comment_winner}}</p>
