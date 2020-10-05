@@ -8,9 +8,9 @@ class Item(models.Model):
     """
     A single item
     """
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=False)
     seller = models.CharField(max_length=200, default='Active user')
-    description = models.TextField()
+    description = models.TextField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True,
                                           default=timezone.now)
