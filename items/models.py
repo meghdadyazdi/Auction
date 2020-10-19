@@ -34,7 +34,7 @@ class Item(models.Model):
     comment_winner = models.TextField(default="No comment yet")
     timer = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
