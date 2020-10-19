@@ -70,4 +70,5 @@ def payment(request, pk):
         item = get_object_or_404(Item, pk=pk)
         print(item.id)
 
-    return render(request, "payment.html", {"item": item, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "payment.html", {"item": item, "order_form": order_form,
+                           "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})

@@ -34,16 +34,3 @@ def start_auction(request, pk):
         item.comment_winner = request.POST.get('comments_buyer')
     item.save()
     return render(request, "itemdetail.html", {'item': item})
-
-
-# def restart_auction(request, pk):
-#     """
-#     restart the auction
-#     """
-#     print('retarttttttttttttttttttttttttttttttttttttttttttttt')
-#     item = get_object_or_404(Item, pk=pk)
-#     item.auction_status = 0
-#     print(item.auction_status)
-#     item.save()
-#     print(item.auction_status)
-#     return render(request, "itemdetail.html", {'item': item, "mode": 'price'})
