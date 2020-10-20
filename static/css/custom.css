@@ -17,6 +17,15 @@ p{
     border-bottom: 1px solid #1d2124;
 }
 
+.navbar-brand {
+    color: #fff;
+    padding: 20px;
+}
+
+.fa-gavel {
+    font-size: 30px;
+}
+
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
     color: #ffffff;
     background-color: #555;
@@ -472,12 +481,40 @@ input:focus {
 /* footer____________________________________________ */
 
 footer {
-    margin-top: 40px;
-    padding-top: 40px;
+    margin-top: 5px;
+    padding: 40px 40px 40px 40px;
     padding-bottom: 40px;
     color: #A9A9A9;
+    background-image: linear-gradient(#1d2124, #1d2124 60%, #1d2124);
+}
+hr{
+    border: 1px solid #a9a9a9 !important;
 }
 
+.copyright{
+    font-size: 13px;
+}
+
+.social{
+    font-size: 15px;
+    padding: 0 10px 0 10px;
+    color: #a9a9a9;
+}
+
+.social:hover{
+    color: #ffffffbf;
+}
+
+.meghdad{
+    color: #a9a9a9;
+}
+
+.meghdad:hover{
+    color: #ffffffbf;
+    text-decoration: none;
+    font-weight: bold;
+}
+}
 /*-------------------------------Media Query-----------------------------------*/
 
 @media only screen and (max-width: 576px) {
