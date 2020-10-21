@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,900,700italic,700,600italic,600,400italic);
 
 body {
-    background-color: #ff00000f !important;
+    background-color: #117a8b0d !important;
     margin: 0 10px 0px 10px;
     font-family: Arial;
 }
@@ -17,13 +17,27 @@ p{
     border-bottom: 1px solid #1d2124;
 }
 
+.navbar-dark .navbar-brand {
+    color: #e7f1f3 !important;
+}
+
 .navbar-brand {
     color: #fff;
     padding: 20px;
 }
 
+.navbar-nav .nav-link {
+    transition: color ease-in-out .5s;
+}
+
 .fa-gavel {
     font-size: 30px;
+    transition: transform ease-in-out .3s;
+}
+
+.fa-gavel:hover {
+    font-size: 30px;
+    transform: rotate(35deg) skewY(15deg);
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
@@ -84,7 +98,8 @@ p{
     size: 10px;
     background-color: #343a40;
     border-color: #343a40;
-    color: #fff
+    color: #fff;
+    transition: background-color ease-in-out .5s;    
 }
 
 #search-btn:focus {
@@ -137,7 +152,6 @@ input:focus {
 
 .announce {
     margin-top: 1rem;
-    /* color: #28a745; */
     border-radius: 3px;
     background-color: #28a74522;
 }
@@ -148,18 +162,15 @@ input:focus {
 
 .announce-winner {
     margin-top: 2rem;
-    /* color: #28a745; */
     border-radius: 3px;
     background-color: #28a7454d;
     padding: 40px;
-    /* margin: 2px; */
     font-size: 20px;
 }
 
 .seller-comment{
     margin-top: 1rem;
     padding: 1rem;
-    /* color: #28a745; */
     border-radius: 3px;
     background-color: #dbeeff;
 }
@@ -167,10 +178,8 @@ input:focus {
 /* img-cart__________________________________________________ */
 .card-item{
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
-  /* transition: 0.3s; */
   border-radius: 2px;
   margin: 0 0 40px 20px;
-  /* height: 350px; */
   width: 200px !important;
   background-color: #fff;
   flex: 0 0 0%!important;
@@ -194,7 +203,7 @@ input:focus {
 }
 
 .img-container{
-    background-color: #ff00001a;
+    background-color: #117a8b1a;
     border-radius: 2px;
     height: 165px;
     width: 200px;
@@ -236,7 +245,6 @@ input:focus {
 }
 
 /* img-detail__________________________________________________ */
-
 .img-detail{
     width: auto;
     height: 100%;
@@ -263,10 +271,6 @@ input:focus {
     display: inline-block; 
 }
 
-/* .card-recipe:hover{
-  box-shadow: 0 8px 90px 0 rgba(0,0,0,1);
-} */
-
 .boxxx {
    position: relative;
    padding: 20px;
@@ -290,9 +294,7 @@ input:focus {
 }
 
 .sort{
-    /* border: 1px solid #dee2e6; */
     width: 250px;
-    /* border-style: none none solid none; */
 }
 
 .sort a {
@@ -304,8 +306,6 @@ input:focus {
 
 .sort a:hover {
     text-decoration: none;
-    /* border: 5px solid #dee2e6;
-    border-style: none none solid none; */
     color: #343a40;
 }
 
@@ -347,7 +347,6 @@ input:focus {
 
 
 /* pagination__________________________________________________ */
-
 .pagination {
     text-align: center;
     margin-top: 1em;
@@ -377,6 +376,7 @@ input:focus {
     padding: 0.5em 0.5em;
     color: #B9B9B9;
     font-size: 1.3em;
+    transition: color ease-in-out .5s;
 }
 
 .pagination-no-action {
@@ -401,12 +401,7 @@ input:focus {
     color: #B9B9B9;
 }
 
-
 /* Timer____________________________________________ */
-
-
-
-
 .timer {
     display: inline-block;
     line-height: 1;
@@ -437,7 +432,6 @@ input:focus {
     display: inline-block;
     line-height: 1;
     padding: 5px;
-    /* margin-top: 20px; */
     font-size: 18px;
     font-weight: bold;
     color:  #343a40;
@@ -477,9 +471,7 @@ input:focus {
     box-shadow: 0 0 0 0.1rem rgba(225,83,97,.5) !important;
 }
 
-
 /* footer____________________________________________ */
-
 footer {
     margin-top: 5px;
     padding: 40px 40px 40px 40px;
@@ -503,6 +495,7 @@ hr{
     font-size: 15px;
     padding: 0 10px 0 10px;
     color: #a9a9a9;
+    transition: color ease-in-out .5s;
 }
 
 .social:hover{
@@ -512,16 +505,16 @@ hr{
 
 .meghdad{
     color: #a9a9a9;
+    transition: color ease-in-out .5s;
 }
 
 .meghdad:hover{
     color: #ffffffbf;
     text-decoration: none;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
-}
-/*-------------------------------Media Query-----------------------------------*/
 
+/*-------------------------------Media Query-----------------------------------*/
 @media only screen and (max-width: 576px) {
     #seconds {
         font-size: 25px;
@@ -534,11 +527,21 @@ hr{
     #search-form {
         width: 100%;
     }
+
     #search-box {
         width: 90%;
-    }  
-}
+    }
 
+    .col-sm-2 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    }
+
+    .col-sm-4 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    }
+}
 
 @media only screen and (min-width: 680px) {
     .sort-wrap{
