@@ -9,7 +9,6 @@
 
     
 <div class="row m0 p0 justify-content-center">
-<!-- <div class="col-12 col-xs-10 col-md-8">sort by:</div> -->
 <div class="col-3 p0">
 <div class="row m0 p0 justify-content-between justify-content-around">
 
@@ -19,39 +18,6 @@
 <div class="col-3 p0"></div>
 <div class="col-3 p0"></div>
 </div>
-
-<div class="sort-wrap">
-<div class="sort">
-{% if mode == 'all'%}
-<a class="mode-sort" href="{% url 'get_items' %}"><strong>All</strong></a>
-<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
-<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
-<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
-{% elif mode == 'new'%}
-<a href="{% url 'get_items' %}"><strong>All</strong></a>
-<a class="mode-sort" href="{% url 'sort_new' %}"><strong>Newest</strong></a>
-<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
-<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
-{% elif mode == 'price'%}
-<a href="{% url 'get_items' %}"><strong>All</strong></a>
-<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
-<a class="mode-sort" href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
-<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
-{% elif mode == 'sold'%}
-<a href="{% url 'get_items' %}"><strong>All</strong></a>
-<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
-<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
-<a class="mode-sort" href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
-{% else %}
-<a href="{% url 'get_items' %}"><strong>All</strong></a>
-<a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
-<a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
-<a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
-{% endif %}
-
-</div>
-</div>
-
 <div class="row m0 p0 justify-content-center">
   {% if not items %}
   <div class="col-12 col-xs-6 col-md-4 text-center p0">
@@ -59,7 +25,6 @@
   </div>
   {% endif %}
 </div>
-
 
 <div class="row m0 p0 justify-content-center">
   {% for item in items %}
@@ -81,13 +46,6 @@
 
     <input type="hidden" class="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
     <input type="hidden" class="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
-
-    <!-- <div class="timer-small" id="timer-small">
-      <div class="timer-small days-small" id="days-small"></div>
-      <div class="timer-small hours-small" id="hours-small"></div>
-      <div class="timer-small minutes-small" id="minutes-small"></div>
-      <div class="timer-small seconds-small" id="seconds-small"></div>
-    </div> -->
 
     <a class="divLinkkk" href="{% url 'item_detail' item.id %}"></a>
   </div>

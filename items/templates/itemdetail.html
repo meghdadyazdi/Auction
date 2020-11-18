@@ -77,7 +77,6 @@
         {% csrf_token %}
         <input type="hidden" id="end-time-fix-form" name="end-time-fix-form" value="0"/>
         <input type="hidden" id="auction-time-form" name="auction-time-form" value="0"/>
-        <!-- <input type="hidden" id="auction-price-form" name="auction-price-form" value="0"/> -->
         <button class="d-none btn btn-success" id="auction_start" type="submit">Start</button>
       </form>
     </div>
@@ -92,7 +91,6 @@
     <div class="d-none" id="end-auction-no-bid">
       <p class="announce announce-caution">Auction is finished. No one bidded this item. You can 
       <a href="{% url 'restart_auction' item.id %}" id="restart-auction" class="btn btn-success text-center p0" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>restart</a>
-      <!-- <button class="btn btn-success text-center" type="" id="restart-auction"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true">restart</span></button> -->
       the auction again.</p>
     </div>
 
@@ -128,13 +126,9 @@
     </div>
     {% endif %}
 
-
-    
-    
     {% if user.username and item.highest_bid_user == user.username %}
     <div class="d-none" id="winner">
-    {% if item.sold == 1 %}
-      
+    {% if item.sold == 1 %}  
       <div class="announce text-justify">
       <div>Thanks for your payment <strong>{{item.buyer_name}}</strong></div>
       <div class="">The item will ship to your address to:</div>
@@ -147,17 +141,13 @@
       <p class="announce">Now you can pay</p>
       <div class="row m0 p0 text-center">
 
-
-
       <form method="post" action="{% url 'payment' item.id %}" class="accountform p0">
         {% csrf_token %}
         <input type="hidden" id="end-of-timer-checkout" name="end-of-timer-checkout" value="0"/>
         <input type="hidden" id="no-form" name="no-form" value="1"/>
         <button class="col btn btn-success" id="checkout" type="submit">Checkout</button>
       </form>
-
-      <!-- <a href="{% url 'payment' item.id %}" class="col btn btn-success text-center" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a> -->
-    </div>
+      </div>
 
       <p class="announce announce-caution">
         If you don't pay in 24 hours you cannnot pay it anymore and you will be
@@ -166,11 +156,6 @@
     </div>
     
     {% endif %}
-    
-    
-    
-    
-    
     <div class="announce">
     {% if user.username and item.seller != user.username and item.auction_status and not item.sold%}
     <div class="" id="bidding">
@@ -203,8 +188,6 @@
   
 {% if user.username and not item.sold and item.auction_status%}
   <div class="d-none" id="confirm-bid">Confirm your new bid </div>
-
-
   <form method="post" action="{% url 'start_auction' item.id %}" class="accountform p0">
         {% csrf_token %}
         <input type="hidden" id="form-2" name="form-2" value="1"/>
@@ -218,12 +201,8 @@
 </div>
 
   </div>
-
   </div>
-
   </div>
-
-
 
   <div class="auction-box col-12 col-md-8">
     {% if user.username %}
@@ -235,11 +214,14 @@
       <img class="rounded img-fluid img-thumbnail" src="{{MEDIA_URL}}{{ item.image }}" />
     </div>
     {% endif %}
-    <h3>{{ item.title }} ({{item.seller}})</h3>
+    <h3>{{ item.title }}</h3>
     <p>
       <span class="boldtext"><i class="far fa-eye"></i></span> {{item.views}}
     </p>
     <p>{{ item.content }}</p>
+    <div>
+      <span class="boldtext"><strong>Seller:</strong> {{item.seller}}</span>
+    </div>
     <div>
       <span class="boldtext"><strong>Description:</strong> {{ item.description }}</span>
     </div>
@@ -286,8 +268,6 @@
 {% endif %}
 
   </div>
-
-
 </div>
 
 

@@ -31,7 +31,6 @@ def user_bid_or_bought_search(request):
 
 
 def sort_sold(request):
-    # items = Item.objects.annotate(search=SearchVector('title', 'description', 'price', 'tag', 'published_date'),).filter(search=request.GET['q'])
     items = Item.objects.filter(sold=1).order_by('-published_date')
     paginator = Paginator(items, 5)
     page = request.GET.get('page', 1)

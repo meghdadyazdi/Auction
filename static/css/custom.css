@@ -1,9 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,900,700italic,700,600italic,600,400italic);
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     background-color: #117a8b0d !important;
-    margin: 0 10px 0px 10px;
     font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border-width: 0 1px 0 1px;
+    border-style: groove;
 }
 
 p {
@@ -68,6 +77,11 @@ p {
 
 .mycontainer{
     margin: 4rem 4rem 0 4rem;
+    flex: 1 0 auto;
+    /* padding: 20px;
+    min-height: 100%;
+    margin: 0 auto -50px; */
+
 }
 
 #search-box{
@@ -173,6 +187,10 @@ input:focus {
     padding: 1rem;
     border-radius: 3px;
     background-color: #dbeeff;
+}
+
+#comment {
+    padding: 0 20% 0 5%;
 }
 
 /* img-cart__________________________________________________ */
@@ -288,13 +306,9 @@ input:focus {
     margin: 2rem 0 1rem 0;
 }
 
-.sort-wrap{
-    padding-left:0rem;
-    margin:  1rem 0 1rem 0;
-}
-
 .sort{
     width: 250px;
+    margin-top: 50px;
 }
 
 .sort a {
@@ -473,6 +487,12 @@ input:focus {
 
 /* footer____________________________________________ */
 footer {
+    /* position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden; */
     margin-top: 5px;
     padding: 40px 40px 40px 40px;
     padding-bottom: 40px;
@@ -543,14 +563,8 @@ hr{
     }
 }
 
-@media only screen and (min-width: 680px) {
-    .sort-wrap{
-    padding-left:8rem;
-    }
-}
-
 @media only screen and (min-width: 1500px) {
-    .sort-wrap{
-    padding-left:15rem;
+    body{        
+    margin: 0 20% 0 20% !important;
     }
 }

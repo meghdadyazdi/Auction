@@ -11,23 +11,20 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <!--Navbar-->
 
+    <!--/.Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark primary-color">
       <a class="navbar-brand" href="/"
-        ><i class="fas fa-gavel"></i>Auctioneer</a
-      >
+        ><i class="fas fa-gavel"></i>Auctioneer</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -35,8 +32,7 @@
         data-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -44,8 +40,7 @@
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'new_item' %}"
-              ><i class="fas fa-plus"></i> Add your Item</a
-            >
+              ><i class="fas fa-plus"></i> Add your Item</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
@@ -78,54 +73,89 @@
     </div>
     {% endif %}
 
-    <br />
+    <br/>
+
     <div class="row m0 p0 justify-content-center">
       <form id="search-form" action="{% url 'search' %}" method="get">
         <input
           id="search-box"
           type="text"
           placeholder="Search for old item here..."
-          name="q"
-        />
+          name="q"/>
+
         <button id="search-btn" class="btn p0" type="submit">
           <i class="fas fa-search"></i>
         </button>
       </form>
-    </div>
+      </div>
+
+      <div class="row m0 p0 justify-content-center">
+        <div class="sort">
+          {% if mode == 'all'%}
+          <a class="mode-sort" href="{% url 'get_items' %}"
+            ><strong>All</strong></a>
+          <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+          <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+          <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+          {% elif mode == 'new'%}
+          <a href="{% url 'get_items' %}"><strong>All</strong></a>
+          <a class="mode-sort" href="{% url 'sort_new' %}"
+            ><strong>Newest</strong></a>
+          <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+          <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+          {% elif mode == 'price'%}
+          <a href="{% url 'get_items' %}"><strong>All</strong></a>
+          <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+          <a class="mode-sort" href="{% url 'sort_price' %}"
+            ><strong>Cheapest</strong></a>
+          <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+          {% elif mode == 'sold'%}
+          <a href="{% url 'get_items' %}"><strong>All</strong></a>
+          <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+          <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+          <a class="mode-sort" href="{% url 'sort_sold' %}"
+            ><strong> Sold</strong></a>
+          {% else %}
+          <a href="{% url 'get_items' %}"><strong>All</strong></a>
+          <a href="{% url 'sort_new' %}"><strong>Newest</strong></a>
+          <a href="{% url 'sort_price' %}"><strong>Cheapest</strong></a>
+          <a href="{% url 'sort_sold' %}"><strong> Sold</strong></a>
+          {% endif %}
+        </div>
+      </div>
 
     <div class="mycontainer">
       {% block content %} {% endblock %}
     </div>
 
-    <footer>
+    <footer class="page-footer">
       <div class="row justify-content-between">
         <div class="coll col-sm-5">
           <b>ABOUT</b>
           <div class="coll about">
-              This online auctioneer is a place to sell your old objects with a
-              good price. The items are sold at online auction with limited
-              auction time which is determined by the seller. Buying at auction
-              is smart for both the buyers and sellers. You can find interesting
-              items for your home or collection for less than what it costs to
-              buy a new one. And the value lasts the day you want to sell.
-        
+            This online auctioneer is a place to sell your old objects with a
+            good price. The items are sold at online auction with limited
+            auction time which is determined by the seller. Buying at auction is
+            smart for both the buyers and sellers. You can find interesting
+            items for your home or collection for less than what it costs to buy
+            a new one. And the value lasts the day you want to sell.
           </div>
         </div>
         <div class="col-6 col-sm-4">
           <b>CONTACT</b>
           <div class="coll">Customer service: +23456789</div>
-          <!-- <br> -->
           <div class="coll">help@auctioneer.com</div>
-          <!-- <br> -->
           <address>
-            Box 564, Disneyland<br/>
+            Box 564, Disneyland<br />
             USA
           </address>
         </div>
         <div class="col-4 col-sm-2">
           <b>QUICK LINK</b>
           <div class="coll"><a class="social p0" href="/">About Us</a></div>
-          <div class="coll"><a class="social p0" href="/">How to auction</a></div>
+          <div class="coll">
+            <a class="social p0" href="/">How to auction</a>
+          </div>
           <div class="coll"><a class="social p0" href="/">Our policy</a></div>
           <div class="coll"><a class="social p0" href="/">Sitemap</a></div>
         </div>
@@ -134,7 +164,11 @@
       <div class="row justify-content-between">
         <div class="coll col-sm-6 copyright">
           Copyright <i class="far fa-copyright"></i> 2020 All Rights Reserved By
-          <a class="meghdad" target="_blank" href="https://github.com/meghdadyazdi"><b>Meghdad</b></a>
+          <a
+            class="meghdad"
+            target="_blank"
+            href="https://github.com/meghdadyazdi"
+            ><b>Meghdad</b></a>
         </div>
         <div class="coll col-sm-4">
           <a class="social" href="/"><i class="fab fa-twitter"></i></a>
@@ -151,18 +185,15 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js"
       integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
   </body>
 </html>
