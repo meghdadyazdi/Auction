@@ -3,6 +3,7 @@
 html {
     position: relative;
     min-height: 100%;
+    background-color: #fff;
 }
 
 body {
@@ -11,8 +12,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    border-width: 0 1px 0 1px;
-    border-style: groove;
 }
 
 p {
@@ -78,10 +77,6 @@ p {
 .mycontainer{
     margin: 4rem 4rem 0 4rem;
     flex: 1 0 auto;
-    /* padding: 20px;
-    min-height: 100%;
-    margin: 0 auto -50px; */
-
 }
 
 #search-box{
@@ -359,7 +354,6 @@ input:focus {
     color: rgb(255,223,0)
 }
 
-
 /* pagination__________________________________________________ */
 .pagination {
     text-align: center;
@@ -476,6 +470,7 @@ input:focus {
   font-size: 25px;
   color: #abcd58;
 }
+
 /* buttons____________________________________________ */
 .btn-danger{
     margin: 2px;
@@ -487,12 +482,6 @@ input:focus {
 
 /* footer____________________________________________ */
 footer {
-    /* position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    overflow:hidden; */
     margin-top: 5px;
     padding: 40px 40px 40px 40px;
     padding-bottom: 40px;
@@ -531,7 +520,6 @@ hr{
 .meghdad:hover{
     color: #ffffffbf;
     text-decoration: none;
-    /* font-weight: bold; */
 }
 
 /*-------------------------------Media Query-----------------------------------*/

@@ -15,12 +15,6 @@ stripe.api_key = settings.STRIPE_SECRET
 # @login_required()
 def payment(request, pk):
     item = get_object_or_404(Item, pk=pk)
-
-    # endt = int(request.POST.get('end-of-timer-checkout'))
-    # no_form = int()
-    # request.POST.get('higher-bid-user')
-
-    # print(no_form+endt)
     if not request.POST.get('no-form'):
         if request.method == "POST":
             order_form = OrderForm(request.POST)
@@ -61,7 +55,6 @@ def payment(request, pk):
                             "We were unable to take a payment with that card!")
     elif not int(request.POST.get('end-of-timer-checkout')) and not item.endtime:
         messages.warning(request, "Auction is NOT finished yet!")
-        # add_error(None, "Auction is NOT finished yet!")
         return render(request, "itemdetail.html", {'item': item})
     else:
         payment_form = MakePaymentForm()
