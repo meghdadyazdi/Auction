@@ -138,7 +138,7 @@
       {% if not item.sold%}
       <p class="announce">Congragulations!! You won this item</p>
       {% endif%}
-    {% elif item.highest_bid_user%}
+    {% elif item.highest_bid_user  and item.highest_bid_user%}
       <p class="announce announce-caution">Auction is finished.</p>
       <p class="announce-winner"><i class="fas fa-trophy"></i><br>Winner is: <span class="winner"><strong> {{item.highest_bid_user}}</strong></span> by <strong>{{item.highest_bid_offer}} €</strong></p>
     {% endif %}
