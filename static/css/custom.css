@@ -186,10 +186,6 @@ input:focus {
     background-color: #dbeeff;
 }
 
-#comment {
-    padding: 0 20% 0 5%;
-}
-
 /* img-cart__________________________________________________ */
 .card-item{
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -538,6 +534,10 @@ hr{
 @media only screen and (max-width: 767px) {
     .img-detail-container{
         height: 300px;
+    }
+
+    .mycontainer{
+    margin: 0.5rem 0.5rem 0 0.5rem;
     }
 
 }
