@@ -7,14 +7,46 @@
 
 {% block content %}
 <div class="row m0 p0">
-  <div class="col-12 col-md-4 text-center">
+<div class="auction-box col-12 col-md-8">
+    {% if user.username %}
+    <p>You are logged in as {{ user.username }}</p>
+    {% else %}
+    <p>To start bidding you should log in or register</p>
+    {% endif %} {% if item.image %}
+    <div class="img-detail-container">
+      <img class="rounded img-fluid img-thumbnail" src="{{MEDIA_URL}}{{ item.image }}" />
+    </div>
+    {% endif %}
+    <h3>{{ item.title }}</h3>
+    <p>
+      <span class="boldtext"><i class="far fa-eye"></i></span> {{item.views}}
+    </p>
+    <p>{{ item.content }}</p>
+    <div>
+      <span class="boldtext"><strong>Seller:</strong> {{item.seller}}</span>
+    </div>
+    <div>
+      <span class="boldtext"><strong>Description:</strong> {{ item.description }}</span>
+    </div>
+    <p class=""><span class="boldtext">#</span>{{ item.tag }}</p>
+    <p><i><span class="boldtext">Published on:</span> {{ item.published_date }}</i></p>
+    <p></p>
+    <a href="{% url 'sort_new' %}" class="btn btn-dark">Home</a>
+    {% if user.username and user.username == item.seller  and not item.auction_status %}
+    <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>
+    {% endif %}
+    
+  </div>
+
+
+  <div class="auction-box col-12 col-md-4 text-center">
     <input type="hidden" class="auction_status" name="auction_status" value="{{ item.auction_status }}"/>
     <input type="hidden" id="auction_time_start" name="auction_time_start" value="{{ item.auction_time_start }}"/>
     <input type="hidden" class="end-time-fix" name="end-time-fix" value="{{item.auction_end_time}}"/>
     <input type="hidden" id="auction-time" name="auction-time" value="{{item.auction_duration_time}}"/>
     <input type="hidden" id="user-name" name="user-name" value="{{user.username}}"/>
     
-<div class="auction-box">
+<div class="">
 
 {% if item.seller != user.username %}
     <div class="announce-box" id="before_auction">
@@ -108,7 +140,7 @@
       {% endif%}
     {% else %}
       <p class="announce announce-caution">Auction is finished.</p>
-      <p class="announce-winner">Winner is: <span class="winner"><strong> {{item.highest_bid_user}}</strong><sup><i class="fas fa-trophy"></i></sup></span> by <strong>{{item.highest_bid_offer}} €</strong></p>
+      <p class="announce-winner"><i class="fas fa-trophy"></i><br>Winner is: <span class="winner"><strong> {{item.highest_bid_user}}</strong></span> by <strong>{{item.highest_bid_offer}} €</strong></p>
     {% endif %}
     </div>
 
@@ -204,38 +236,7 @@
   </div>
   </div>
 
-  <div class="auction-box col-12 col-md-8">
-    {% if user.username %}
-    <p>You are logged in as {{ user.username }}</p>
-    {% else %}
-    <p>To start bidding you should log in or register</p>
-    {% endif %} {% if item.image %}
-    <div class="img-detail-container">
-      <img class="rounded img-fluid img-thumbnail" src="{{MEDIA_URL}}{{ item.image }}" />
-    </div>
-    {% endif %}
-    <h3>{{ item.title }}</h3>
-    <p>
-      <span class="boldtext"><i class="far fa-eye"></i></span> {{item.views}}
-    </p>
-    <p>{{ item.content }}</p>
-    <div>
-      <span class="boldtext"><strong>Seller:</strong> {{item.seller}}</span>
-    </div>
-    <div>
-      <span class="boldtext"><strong>Description:</strong> {{ item.description }}</span>
-    </div>
-    <p class=""><span class="boldtext">#</span>{{ item.tag }}</p>
-    <p><i><span class="boldtext">Published on:</span> {{ item.published_date }}</i></p>
-    <p></p>
-    <a href="{% url 'sort_new' %}" class="btn btn-dark">Home</a>
-    {% if user.username and user.username == item.seller  and not item.auction_status %}
-    <a href="{% url 'edit_item' item.id%}" class="btn btn-danger">Edit</a>
-    {% endif %}
-    
-  </div>
-
-
+  
 
   <div class="col-12 announce-box" id="comment">
    <p class=""><b>Seller's Comments:</b></p>
