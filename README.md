@@ -11,7 +11,33 @@ You can find a live demo [here](https://auction-meghdad.herokuapp.com/)
 ## UX
 Auctioneer website is designed for general users or collectors who want to sell or buy old stuff.
  
-The application is also pushed to my Github repository `https://github.com/meghdadyazdi/Auction` which can be cloned.
+The application is also pushed to my GitHub repository `https://github.com/meghdadyazdi/Auction` which can be cloned.
+
+In this auctioneer the seller can start the auction after determining the auction duration. After that sellers start bidding until the time of auction is over.
+
+The winner who offers the highest price should pay and the object will be shipped to his/her address.
+
+
+# Technologies 
+1. Django
+2. Heroku
+3. Postgres Database (mySQL)
+4. Stripe Payment 
+5. JavaScript/jQuery
+6. HTML
+7. CSS
+8. bootstrap
+
+
+# Testing
+All automated testing was done using Travis-CI and Manual testing was done for all functions in both the events and posts apps. 
+
+# Installation 
+For cloning this repository and setting up and installing requirements in the requirements.txt One can run the following: 
+```
+$ (sudo) pip3 -r install requirements.txt
+```
+
 
 ## Content
 All content in this application were written by me.
