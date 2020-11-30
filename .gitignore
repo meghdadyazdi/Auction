@@ -1,14 +1,2 @@
-.gitpod.dockerfile
-.gitpod.yml
-.theia/
-db.sqlite3
-*.sqlite3
-__pycache__
-env.py
-*png
-static/
-media/
-setH.py
-cata.py
-setPostgre.py
+
 
